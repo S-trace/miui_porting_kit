@@ -36,6 +36,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 		$(FW_DIR)/*.bin \
 		$(FW_DIR)/system/lib/modules/* \
 		$(FW_DIR)/recovery \
+		$(FW_DIR)/system/app/Updater.apk \
 		$(FW_DIR)/META-INF/CERT.* \
 		$(FW_DIR)/META-INF/MANIFEST.* \
 		$(FW_DIR)/META-INF/com/android/otacert
