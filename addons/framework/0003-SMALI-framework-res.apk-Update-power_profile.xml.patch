@@ -1,0 +1,86 @@
+From 1b78fcf6d4b850ce9b66dda77fdc1d7477338c53 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Sun, 22 May 2016 19:59:44 +0300
+Subject: [PATCH 1/2] [SMALI] framework-res.apk: Update power_profile.xml
+
+---
+ framework-res.apk/res/xml/power_profile.xml | 49 +++++++++++++++--------------
+ 1 file changed, 26 insertions(+), 23 deletions(-)
+
+diff --git a/framework-res.apk/res/xml/power_profile.xml b/framework-res.apk/res/xml/power_profile.xml
+index 4a244d7..ddff1b1 100644
+--- a/framework-res.apk/res/xml/power_profile.xml
++++ b/framework-res.apk/res/xml/power_profile.xml
+@@ -1,36 +1,36 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <device name="Android">
+     <item name="none">0</item>
+-    <item name="screen.on">100</item>
+-    <item name="bluetooth.active">142</item>
+-    <item name="bluetooth.on">0.3</item>
+-    <item name="bluetooth.at">35690</item>
+-    <item name="screen.full">160</item>
+-    <item name="wifi.on">4</item>
+-    <item name="wifi.active">120</item>
+-    <item name="wifi.scan">220</item>
+-    <item name="dsp.audio">88</item>
+-    <item name="dsp.video">88</item>
+-    <item name="radio.active">300</item>
+-    <item name="gps.on">170</item>
+-    <item name="battery.capacity">1390</item>
+-    <item name="radio.scanning">70</item>
++    <item name="screen.on">86</item>
++    <item name="screen.full">150</item>
++    <item name="bluetooth.active">25.2</item>
++    <item name="bluetooth.on">1.2</item>
++    <item name="wifi.on">2</item>
++    <item name="wifi.active">74</item>
++    <item name="wifi.scan">54</item>
++    <item name="dsp.audio">10.8</item>
++    <item name="dsp.video">39.6</item>
++    <item name="gps.on">80</item>
++    <item name="radio.active">250</item>
++    <item name="radio.scanning">10</item>
+     <array name="radio.on">
+-        <value>3</value>
++        <value>4</value>
+         <value>3</value>
+     </array>
+     <array name="cpu.speeds">
+         <value>300000</value>
+-        <value>422400</value>
+-        <value>652800</value>
+-        <value>729600</value>
+-        <value>883200</value>
+-        <value>960000</value>
+-        <value>1036800</value>
++        <value>384000</value>
++        <value>600000</value>
++        <value>787200</value>
++        <value>998400</value>
++        <value>1094400</value>
+         <value>1190400</value>
+-        <value>1267200</value>
++        <value>1305600</value>
++        <value>1344000</value>
++        <value>1401600</value>
+         <value>1497600</value>
+-        <value>1574400</value>
++        <value>1593600</value>
++        <value>1689600</value>
+     </array>
+     <item name="cpu.idle">2.8</item>
+     <array name="cpu.active">
+@@ -45,5 +45,8 @@
+         <value>134.5</value>
+         <value>141.8</value>
+         <value>148.5</value>
++        <value>157</value>
++        <value>163.3</value>
+     </array>
++    <item name="battery.capacity">3000</item>
+ </device>
+\ No newline at end of file
+-- 
+2.7.4
+

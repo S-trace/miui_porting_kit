@@ -1,0 +1,34 @@
+From 9e7feacf788a4866513d90cd0ee98e7f923439d2 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Thu, 5 May 2016 22:42:26 +0300
+Subject: [PATCH 03/54] [FW] Purge armani TWRP recovery
+
+---
+ FW/META-INF/com/google/android/updater-script |   5 -----
+ 1 files changed, 5 deletions(-)
+
+diff --git a/FW/META-INF/com/google/android/updater-script b/FW/META-INF/com/google/android/updater-script
+index a21fe41..b871b05 100644
+--- a/FW/META-INF/com/google/android/updater-script
++++ b/FW/META-INF/com/google/android/updater-script
+@@ -69,9 +69,7 @@ set_metadata("/system/bin/vold", "uid", 0, "gid", 2000, "mode", 0755, "capabilit
+ set_metadata("/system/bin/wpa_supplicant", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:wpa_exec:s0");
+ set_metadata_recursive("/system/etc/dhcpcd", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:dhcp_system_file:s0");
+ set_metadata("/system/etc/dhcpcd/dhcpcd-run-hooks", "uid", 1014, "gid", 2000, "mode", 0550, "capabilities", 0x0, "selabel", "u:object_r:dhcp_system_file:s0");
+-set_metadata("/system/etc/install-recovery.sh", "uid", 0, "gid", 0, "mode", 0544, "capabilities", 0x0);
+ set_metadata_recursive("/system/etc/ppp", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0555, "capabilities", 0x0, "selabel", "u:object_r:ppp_system_file:s0");
+-set_metadata("/system/recovery-from-boot.p", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0);
+ set_metadata("/system/vendor", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+ set_metadata("/system/vendor/etc", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+ set_metadata("/system/vendor/lib", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+@@ -211,7 +209,4 @@ delete_recursive("/data/cust");
+ delete_recursive("/data/miui/cust_variant");
+ delete_recursive("/data/miui/app/recommended");
+ unmount("/data");
+-ui_print("Installing custom recovery");
+-ui_print("Flashing TWRP Touch recovery...");
+-package_extract_file("recovery/twrp.img", "/dev/block/platform/msm_sdcc.1/by-name/recovery");
+ set_progress(1);
+-- 
+2.7.4
+

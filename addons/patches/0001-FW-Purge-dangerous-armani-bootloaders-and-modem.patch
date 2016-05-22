@@ -1,0 +1,36 @@
+From 951d5b2194ac6d5f21bca882de5816e3bef11cf4 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Thu, 5 May 2016 22:40:22 +0300
+Subject: [PATCH 01/54] [FW] Purge dangerous armani bootloaders and modem
+
+---
+ FW/META-INF/com/google/android/updater-script |  13 -------------
+ 1 files changed, 13 deletions(-)
+
+diff --git a/FW/META-INF/com/google/android/updater-script b/FW/META-INF/com/google/android/updater-script
+index f2947b8..a21fe41 100644
+--- a/FW/META-INF/com/google/android/updater-script
++++ b/FW/META-INF/com/google/android/updater-script
+@@ -91,19 +91,6 @@ show_progress(0.200000, 0);
+ show_progress(0.200000, 10);
+ package_extract_file("boot.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
+ show_progress(0.100000, 0);
+-ui_print("Writing image emmc_appsboot.mbn...");
+-package_extract_file("emmc_appsboot.mbn", "/dev/block/platform/msm_sdcc.1/by-name/aboot");
+-ui_print("Writing image tz.mbn...");
+-package_extract_file("tz.mbn", "/dev/block/platform/msm_sdcc.1/by-name/tz");
+-ui_print("Writing image NON-HLOS.bin...");
+-unmount("/vendor/firmware");
+-package_extract_file("NON-HLOS.bin", "/dev/block/platform/msm_sdcc.1/by-name/modem");
+-ui_print("Writing image rpm.mbn...");
+-package_extract_file("rpm.mbn", "/dev/block/platform/msm_sdcc.1/by-name/rpm");
+-ui_print("Writing image sdi.mbn...");
+-package_extract_file("sdi.mbn", "/dev/block/platform/msm_sdcc.1/by-name/sdi");
+-ui_print("Writing image sbl1.mbn...");
+-package_extract_file("sbl1.mbn", "/dev/block/platform/msm_sdcc.1/by-name/sbl1");
+ delete("/data/miui/apps/GoogleTTS.apk");
+ delete("/data/app/GoogleTTS.apk");
+ delete_recursive("/data/miui/cust/cn/app_overlay");
+-- 
+2.7.4
+

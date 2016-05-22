@@ -1,0 +1,20 @@
+From 3e564de2200c29c1dc7f1e9def903a7cc2f89445 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Sun, 22 May 2016 11:21:24 +0300
+Subject: [PATCH 52/54] [FW] [PROPS] build.prop: Set ro.sf.lcd_density=320
+
+---
+ FW/system/build.prop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/FW/system/build.prop b/FW/system/build.prop
+index bc29523..763b7eb 100644
+--- a/FW/system/build.prop
++++ b/FW/system/build.prop
+@@ -260,2 +260,3 @@ drm.service.enabled=true
+ ro.com.google.gmsversion=4.4_r4
+ persist.adb.notify=0
++ro.sf.lcd_density=320
+-- 
+2.7.4
+
