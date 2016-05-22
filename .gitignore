@@ -1,0 +1,8 @@
+/boot/
+/FW/
+/keys/
+/tools/*/*.o
+/tools/bootimg/mkbootimg
+/tools/bootimg/unpackbootimg
+/*.zip
+*.kate-swp
