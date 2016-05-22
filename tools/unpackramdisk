@@ -1,0 +1,16 @@
+#!/bin/bash
+echo Unpacking bootimg
+mkdir -p boot/tmp
+pushd boot/tmp
+../../tools/unpackbootimg --input ../../FW/boot.img
+popd
+
+echo Unpacking ramdisk
+rm -rf boot/ramdisk
+mkdir -p boot/ramdisk
+pushd boot/ramdisk
+zcat ../tmp/boot.img-ramdisk.gz |cpio -i
+popd
+
+echo Cleaning up
+rm -rf boot/tmp
