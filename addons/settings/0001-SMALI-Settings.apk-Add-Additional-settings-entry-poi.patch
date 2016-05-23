@@ -1,20 +1,20 @@
-From ba47b5c4e2f2788228dc92a46dcd980deea39c58 Mon Sep 17 00:00:00 2001
-From: S-trace <S-trace@list.ru>
-Date: Sun, 22 May 2016 22:51:38 +0300
-Subject: [PATCH] [SMALI] Settings.apk: Add Additional settings entry point
-and start OpenDelta on Updater icon
+From 9c9df0a8aaaa58d8168e5ce5a2d722b47a326467 Mon Sep 17 00:00:00 2001
+From: Soul Trace <S-trace@list,ru>
+Date: Mon, 23 May 2016 20:00:05 +0200
+Subject: [PATCH] [SMALI] Settings.apk: Add Additional settings entry point and
+ start OpenDelta on Updater icon
 
 ---
- Settings.apk/apktool.yml                   | 1 +
- Settings.apk/res/values-pl/strings.xml     | 1 +
- Settings.apk/res/values-ru/strings.xml     | 1 +
- Settings.apk/res/values-zh-rTW/strings.xml | 1 +
- Settings.apk/res/values/ids.xml            | 1 +
- Settings.apk/res/values/public.xml         | 3 ++-
- Settings.apk/res/values/strings.xml        | 1 +
- Settings.apk/res/xml/settings_headers.xml  | 3 +++
+ Settings.apk/apktool.yml                                             | 1 +
+ Settings.apk/res/values-pl/strings.xml                               | 1 +
+ Settings.apk/res/values-ru/strings.xml                               | 1 +
+ Settings.apk/res/values-zh-rTW/strings.xml                           | 1 +
+ Settings.apk/res/values/ids.xml                                      | 1 +
+ Settings.apk/res/values/public.xml                                   | 5 +++--
+ Settings.apk/res/values/strings.xml                                  | 1 +
+ Settings.apk/res/xml/settings_headers.xml                            | 3 +++
  Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali | 4 ++--
- 9 files changed, 13 insertions(+), 3 deletion(-)
+ 9 files changed, 14 insertions(+), 4 deletions(-)
 
 diff --git a/Settings.apk/apktool.yml b/Settings.apk/apktool.yml
 index c58c4e8..b78068c 100644
@@ -29,7 +29,7 @@ index c58c4e8..b78068c 100644
  version: 2.1.1
  versionInfo:
 diff --git a/Settings.apk/res/values-pl/strings.xml b/Settings.apk/res/values-pl/strings.xml
-index 5dd449a..c083359 100644
+index e08b072..78c956c 100644
 --- a/Settings.apk/res/values-pl/strings.xml
 +++ b/Settings.apk/res/values-pl/strings.xml
 @@ -2097,6 +2097,7 @@ Każdy użytkownik może akceptować zaktualizowane uprawnienia aplikacji w imie
@@ -41,7 +41,7 @@ index 5dd449a..c083359 100644
      <string name="cell_broadcast_settings_summary">Wybierz typ komunikatów alarmowych</string>
      <string name="screen_timeout_title">Wyłączenie ekranu</string>
 diff --git a/Settings.apk/res/values-ru/strings.xml b/Settings.apk/res/values-ru/strings.xml
-index b113362..c998d57 100644
+index 10dbc4e..6fdb7c6 100644
 --- a/Settings.apk/res/values-ru/strings.xml
 +++ b/Settings.apk/res/values-ru/strings.xml
 @@ -1064,6 +1064,7 @@
@@ -53,7 +53,7 @@ index b113362..c998d57 100644
      <string name="license_title">Лицензия</string>
      <string name="terms_title">Условия использования</string>
 diff --git a/Settings.apk/res/values-zh-rTW/strings.xml b/Settings.apk/res/values-zh-rTW/strings.xml
-index e86986b..85cb85a 100644
+index e44c8a1..89fd866 100644
 --- a/Settings.apk/res/values-zh-rTW/strings.xml
 +++ b/Settings.apk/res/values-zh-rTW/strings.xml
 @@ -1025,6 +1025,7 @@ PIN 碼可能不正確。"</string>
@@ -75,19 +75,19 @@ index ed9eff2..a5ad89f 100644
 +    <item type="id" name="device_settings">false</item>
  </resources>
 diff --git a/Settings.apk/res/values/public.xml b/Settings.apk/res/values/public.xml
-index 2cd1a15..8e0a209 100644
+index 3fa2bbe..2f05eb2 100644
 --- a/Settings.apk/res/values/public.xml
 +++ b/Settings.apk/res/values/public.xml
-@@ -6269,7 +6269,7 @@
-     <public type="string" name="err_router_files_delete" id="0x7f0b152c" />
-     <public type="string" name="state_mounting" id="0x7f0b152d" />
-     <public type="string" name="hardware_version" id="0x7f0b0e7a" />
+@@ -6272,7 +6272,7 @@
+     <public type="string" name="err_router_files_delete" id="0x7f0b172f" />
+     <public type="string" name="state_mounting" id="0x7f0b1730" />
+     <public type="string" name="hardware_version" id="0x7f0b0e7e" />
 -    <public type="string" name="APKTOOL_DUMMY_0811" id="0x7f0b0811" />
 +    <public type="string" name="device_settings" id="0x7f0b0811" />
      <public type="string" name="APKTOOL_DUMMY_0813" id="0x7f0b0813" />
      <public type="string" name="APKTOOL_DUMMY_0814" id="0x7f0b0814" />
      <public type="string" name="APKTOOL_DUMMY_0815" id="0x7f0b0815" />
-@@ -8012,6 +8012,7 @@
+@@ -8540,6 +8540,7 @@
      <public type="id" name="vpn_create" id="0x7f0e034f" />
      <public type="id" name="vpn_lockdown" id="0x7f0e0350" />
      <public type="id" name="wifi_wps" id="0x7f0e0351" />
@@ -95,8 +95,15 @@ index 2cd1a15..8e0a209 100644
      <public type="integer" name="maximum_user_dictionary_word_length" id="0x7f0f0000" />
      <public type="integer" name="keyguard_appwidget_picker_cols" id="0x7f0f0001" />
      <public type="integer" name="preference_scrollbar_style" id="0x7f0f0002" />
+@@ -8688,4 +8689,4 @@
+     <public type="menu" name="usage_log" id="0x7f110004" />
+     <public type="menu" name="vpn" id="0x7f110005" />
+     <public type="menu" name="wifi_setup" id="0x7f110006" />
+-</resources>
+\ No newline at end of file
++</resources>
 diff --git a/Settings.apk/res/values/strings.xml b/Settings.apk/res/values/strings.xml
-index 54d3c85..ea4b456 100644
+index 2fa065c..d87a96f 100644
 --- a/Settings.apk/res/values/strings.xml
 +++ b/Settings.apk/res/values/strings.xml
 @@ -1094,6 +1094,7 @@ To clear music, pictures, and other user data, the "<b>SD card</b> needs to be e
@@ -122,7 +129,7 @@ index ee8e438..fa18810 100644
  </preference-headers>
 \ No newline at end of file
 diff --git a/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali b/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
-index e24a2ff..f73a05c 100644
+index 498e3ca..8cfd025 100644
 --- a/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
 +++ b/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
 @@ -3053,9 +3053,9 @@
@@ -138,5 +145,5 @@ index e24a2ff..f73a05c 100644
      invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
  
 -- 
-2.7.4
+2.1.4
 
