@@ -6,3 +6,5 @@
 /tools/bootimg/unpackbootimg
 /*.zip
 *.kate-swp
+/*.list
+/tmp/
