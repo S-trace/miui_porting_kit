@@ -59,7 +59,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@tools/apktool/apktool if FW/system/app/miuisystem.apk -t MIUI7K -p tmp/frameworks
 
 	@echo "Applying SMALI patches"
-	@for patch in `find addons/ -name *-SMALI-*.patch -type f|sort`; do \
+	@for patch in `find addons/ -name *-SMALI-*.patch -type f|sort --field-separator=/ --key=3`; do \
 		file="`echo $$patch|cut -d '-' -f 3`"; \
 		if ! echo $$file|fgrep -q .; then file="`echo $$patch|cut -d '-' -f 3-4`";fi ; \
 		path="`find FW/ -name $$file`"; \
@@ -126,7 +126,7 @@ boot: $(shell find addons/*/boot/ -type f) tools/bootimg/unpackbootimg
 	@echo "Installing boot addons"
 	@cp -r addons/*/boot/* boot/
 	@echo "Applying boot patches"
-	@for patch in `find addons/ -name *-BOOT-*.patch -type f|sort`; do \
+	@for patch in `find addons/ -name *-BOOT-*.patch -type f|sort --field-separator=/ --key=3`; do \
 	echo "Applying $$patch"; \
 	cd boot/ ; \
 	git init; \
