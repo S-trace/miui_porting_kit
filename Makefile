@@ -160,7 +160,10 @@ zip: $(ZIP)
 $(ZIP): $(shell find $(FW_DIR) -type f|sed 's/ /\\ /g') FW $(FW_DIR)/boot.img Makefile # FW zip depends on all files in $(FW_DIR)/ subdir, $(FW_DIR)/ itself, boot and Makefile
 	@echo "Packing flashable ZIP"
 	@rm -f "$(ZIP)"
-	@cd $(FW_DIR)/; zip -r "../$(ZIP)" *
+	@cd $(FW_DIR)/; zip -r "../$(ZIP)-unsigned" *
+	@echo "Signing flashable ZIP"
+	@java -jar tools/signapk.jar -a 4 keys/$(MIUI_VERSION)/releasekey.x509.pem keys/$(MIUI_VERSION)/releasekey.pk8 "$(ZIP)-unsigned" "$(ZIP)"
+	@rm "$(ZIP)-unsigned"
 	@ln "$(ZIP)" "$(NAME)"
 	@echo $(ZIP) \($(NAME)\) built
 
