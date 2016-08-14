@@ -1,0 +1,142 @@
+From ba47b5c4e2f2788228dc92a46dcd980deea39c58 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Sun, 22 May 2016 22:51:38 +0300
+Subject: [PATCH] [SMALI] Settings.apk: Add Additional settings entry point
+and start OpenDelta on Updater icon
+
+---
+ Settings.apk/apktool.yml                   | 1 +
+ Settings.apk/res/values-pl/strings.xml     | 1 +
+ Settings.apk/res/values-ru/strings.xml     | 1 +
+ Settings.apk/res/values-zh-rTW/strings.xml | 1 +
+ Settings.apk/res/values/ids.xml            | 1 +
+ Settings.apk/res/values/public.xml         | 3 ++-
+ Settings.apk/res/values/strings.xml        | 1 +
+ Settings.apk/res/xml/settings_headers.xml  | 3 +++
+ Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali | 4 ++--
+ 9 files changed, 13 insertions(+), 3 deletion(-)
+
+diff --git a/Settings.apk/apktool.yml b/Settings.apk/apktool.yml
+index c58c4e8..b78068c 100644
+--- a/Settings.apk/apktool.yml
++++ b/Settings.apk/apktool.yml
+@@ -50,6 +50,7 @@ usesFramework:
+   - 1
+   - 16
+   - 17
++  - 18
+   tag: MIUI7K
+ version: 2.1.1
+ versionInfo:
+diff --git a/Settings.apk/res/values-pl/strings.xml b/Settings.apk/res/values-pl/strings.xml
+index 5dd449a..c083359 100644
+--- a/Settings.apk/res/values-pl/strings.xml
++++ b/Settings.apk/res/values-pl/strings.xml
+@@ -2097,6 +2097,7 @@ Każdy użytkownik może akceptować zaktualizowane uprawnienia aplikacji w imie
+     <string name="user_image_take_photo">Zrób zdjęcie</string>
+     <string name="user_image_choose_photo">Wybierz zdjęcie z galerii</string>
+     <string name="regulatory_info_text" />
++    <string name="device_settings">Ustawienia dodatkowe</string>
+     <string name="wifi_display_settings_empty_list_wifi_display_disabled">Wyświetlacz bezprzewodowy jest wyłączony, ponieważ wyłączone jest Wi-Fi.</string>
+     <string name="cell_broadcast_settings_summary">Wybierz typ komunikatów alarmowych</string>
+     <string name="screen_timeout_title">Wyłączenie ekranu</string>
+diff --git a/Settings.apk/res/values-ru/strings.xml b/Settings.apk/res/values-ru/strings.xml
+index b113362..c998d57 100644
+--- a/Settings.apk/res/values-ru/strings.xml
++++ b/Settings.apk/res/values-ru/strings.xml
+@@ -1064,6 +1064,7 @@
+     <string name="legal_information">Правовая информация</string>
+     <string name="contributors_title">Участники</string>
+     <string name="regulatory_information">Нормативная информация</string>
++    <string name="device_settings">Дополнительно</string>
+     <string name="copyright_title">Авторские права</string>
+     <string name="license_title">Лицензия</string>
+     <string name="terms_title">Условия использования</string>
+diff --git a/Settings.apk/res/values-zh-rTW/strings.xml b/Settings.apk/res/values-zh-rTW/strings.xml
+index e86986b..85cb85a 100644
+--- a/Settings.apk/res/values-zh-rTW/strings.xml
++++ b/Settings.apk/res/values-zh-rTW/strings.xml
+@@ -1025,6 +1025,7 @@ PIN 碼可能不正確。"</string>
+     <string name="legal_information">法律資訊</string>
+     <string name="contributors_title">貢獻者</string>
+     <string name="regulatory_information">法規資訊</string>
++    <string name="device_settings">高級設置</string>
+     <string name="copyright_title">版權</string>
+     <string name="license_title">授權</string>
+     <string name="terms_title">條款及細則</string>
+diff --git a/Settings.apk/res/values/ids.xml b/Settings.apk/res/values/ids.xml
+index ed9eff2..a5ad89f 100644
+--- a/Settings.apk/res/values/ids.xml
++++ b/Settings.apk/res/values/ids.xml
+@@ -848,4 +848,5 @@
+     <item type="id" name="vpn_create">false</item>
+     <item type="id" name="vpn_lockdown">false</item>
+     <item type="id" name="wifi_wps">false</item>
++    <item type="id" name="device_settings">false</item>
+ </resources>
+diff --git a/Settings.apk/res/values/public.xml b/Settings.apk/res/values/public.xml
+index 2cd1a15..8e0a209 100644
+--- a/Settings.apk/res/values/public.xml
++++ b/Settings.apk/res/values/public.xml
+@@ -6269,7 +6269,7 @@
+     <public type="string" name="err_router_files_delete" id="0x7f0b152c" />
+     <public type="string" name="state_mounting" id="0x7f0b152d" />
+     <public type="string" name="hardware_version" id="0x7f0b0e7a" />
+-    <public type="string" name="APKTOOL_DUMMY_0811" id="0x7f0b0811" />
++    <public type="string" name="device_settings" id="0x7f0b0811" />
+     <public type="string" name="APKTOOL_DUMMY_0813" id="0x7f0b0813" />
+     <public type="string" name="APKTOOL_DUMMY_0814" id="0x7f0b0814" />
+     <public type="string" name="APKTOOL_DUMMY_0815" id="0x7f0b0815" />
+@@ -8012,6 +8012,7 @@
+     <public type="id" name="vpn_create" id="0x7f0e034f" />
+     <public type="id" name="vpn_lockdown" id="0x7f0e0350" />
+     <public type="id" name="wifi_wps" id="0x7f0e0351" />
++    <public type="id" name="device_settings" id="0x7f0e0352" />
+     <public type="integer" name="maximum_user_dictionary_word_length" id="0x7f0f0000" />
+     <public type="integer" name="keyguard_appwidget_picker_cols" id="0x7f0f0001" />
+     <public type="integer" name="preference_scrollbar_style" id="0x7f0f0002" />
+diff --git a/Settings.apk/res/values/strings.xml b/Settings.apk/res/values/strings.xml
+index 54d3c85..ea4b456 100644
+--- a/Settings.apk/res/values/strings.xml
++++ b/Settings.apk/res/values/strings.xml
+@@ -1094,6 +1094,7 @@ To clear music, pictures, and other user data, the "<b>SD card</b> needs to be e
+     <string name="legal_information">Legal information</string>
+     <string name="contributors_title">Contributors</string>
+     <string name="regulatory_information">Regulatory information</string>
++    <string name="device_settings">Additional settings</string>
+     <string name="copyright_title">Copyright</string>
+     <string name="license_title">License</string>
+     <string name="terms_title">Terms and conditions</string>
+diff --git a/Settings.apk/res/xml/settings_headers.xml b/Settings.apk/res/xml/settings_headers.xml
+index ee8e438..fa18810 100644
+--- a/Settings.apk/res/xml/settings_headers.xml
++++ b/Settings.apk/res/xml/settings_headers.xml
+@@ -51,5 +51,8 @@
+     <header android:icon="@drawable/ic_application_settings" android:id="@id/application_settings" android:title="@string/applications_settings" android:fragment="com.android.settings.applications.ApplicationsContainer" />
+     <header android:icon="@drawable/ic_account_autostar" android:id="@id/account_autostar" android:title="@string/account_autostar_label" android:fragment="com.android.settings.Autostar.AutoMangement" />
+     <header android:id="@id/space" />
++    <header android:icon="@drawable/ic_other_advanced_settings" android:id="@id/device_settings" android:title="@string/device_settings">
++        <intent android:targetPackage="com.cyanogenmod.settings.device" android:action="android.intent.action.MAIN" android:targetClass="com.cyanogenmod.settings.device.SettingsActivity" />
++    </header>
+     <header android:icon="@drawable/ic_about_settings" android:id="@id/about_settings" android:title="@string/about_settings" android:fragment="com.android.settings.MiuiDeviceInfoSettings" />
+ </preference-headers>
+\ No newline at end of file
+diff --git a/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali b/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
+index e24a2ff..f73a05c 100644
+--- a/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
++++ b/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
+@@ -3053,9 +3053,9 @@
+ 
+     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+ 
+-    const-string v1, "com.android.updater"
++    const-string v1, "eu.chainfire.opendelta"
+ 
+-    const-string v2, "com.android.updater.MainActivity"
++    const-string v2, "eu.chainfire.opendelta.MainActivity"
+ 
+     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+ 
+-- 
+2.7.4
+
