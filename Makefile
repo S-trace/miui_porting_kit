@@ -20,13 +20,13 @@ tools/bootimg/mkbootimg:
 tools/bootimg/unpackbootimg:
 	$(MAKE) -C tools/bootimg unpackbootimg
 
-keys:
-	mkdir keys
-	echo ""|./tools/make_key keys/shared     "/CN=Shared key for $(MIUI_VERSION)/" ; true
-	echo ""|./tools/make_key keys/testkey    "/CN=Testkey for $(MIUI_VERSION)/" ; true
-	echo ""|./tools/make_key keys/media      "/CN=Media key for $(MIUI_VERSION)/" ; true
-	echo ""|./tools/make_key keys/platform   "/CN=Platform key for $(MIUI_VERSION)/" ; true
-	echo ""|./tools/make_key keys/releasekey "/CN=Release key for $(MIUI_VERSION)/" ; true
+keys/$(MIUI_VERSION):
+	mkdir -p keys/$(MIUI_VERSION)
+	echo ""|./tools/make_key keys/$(MIUI_VERSION)/shared     "/CN=Shared key for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/$(MIUI_VERSION)/testkey    "/CN=Testkey for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/$(MIUI_VERSION)/media      "/CN=Media key for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/$(MIUI_VERSION)/platform   "/CN=Platform key for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/$(MIUI_VERSION)/releasekey "/CN=Release key for $(MIUI_VERSION)/" ; true
 
 FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@echo "Unpacking origin $(ORIGIN)"
@@ -86,7 +86,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 # 	@rm -rf tmp/
 
 	@echo "Resigning APKs"
-	@for file in `find $(FW_DIR)/ -iname *.apk`; do ./tools/resign_apk.sh $$file `basename $$file|rev|cut -d . -f 2-|rev` ;done
+	@for file in `find $(FW_DIR)/ -iname *.apk`; do ./tools/resign_apk.sh $$file `basename $$file|rev|cut -d . -f 2-|rev` $(MIUI_VERSION) ;done
 
 	@echo "Updating build.prop data"
 	@sed -i 's/armani/d10f/g' FW/system/build.prop
