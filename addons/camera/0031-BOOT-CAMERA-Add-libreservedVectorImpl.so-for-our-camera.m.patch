@@ -1,0 +1,27 @@
+From f607ae610ac5713060fa54c35cb3f76678a268c8 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Sun, 8 May 2016 21:08:09 +0300
+Subject: [PATCH 31/54] [BOOT] [CAMERA] Add libreservedVectorImpl.so for our
+ camera.msm8226.so
+
+---
+ ramdisk/init.target.rc            |   3 ++-
+ 1 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ramdisk/init.target.rc b/ramdisk/init.target.rc
+index 565071b..25e690d 100755
+--- a/ramdisk/init.target.rc
++++ b/ramdisk/init.target.rc
+@@ -60,7 +60,8 @@ on post-fs-data
+ 
+ # import cne init file
+ on post-fs
+-    export LD_PRELOAD /vendor/lib/libNimsWrap.so
++    export LD_PRELOAD /vendor/lib/libNimsWrap.so:/system/lib/libreservedVectorImpl.so
++
+ 
+     chown system system /dev/sysmatdrv
+     chmod 0660 /dev/sysmatdrv
+-- 
+2.7.4
+
