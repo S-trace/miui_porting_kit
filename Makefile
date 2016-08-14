@@ -1,5 +1,6 @@
+MIUI_VERSION = "MIUI7K"
 CMDLINE = console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
-OTAVER := miui-$(shell date +%Y%m%d-%H%M)-d10f-MIUI7K
+OTAVER := miui-$(shell date +%Y%m%d-%H%M)-d10f-$(MIUI_VERSION)
 ZIP     = MIUI7_d10f_by_S-trace_latest.zip
 NAME    = $(OTAVER).zip
 ORIGIN  = $(shell ls xiaomi.eu_multi_armani_*_v7-4.4.zip|sort|tail -n1)
@@ -21,11 +22,11 @@ tools/bootimg/unpackbootimg:
 
 keys:
 	mkdir keys
-	echo ""|./tools/make_key keys/shared     "/CN=Shared key for MIUI7K/" ; true
-	echo ""|./tools/make_key keys/testkey    "/CN=Testkey for MIUI7K/" ; true
-	echo ""|./tools/make_key keys/media      "/CN=Media key for MIUI7K/" ; true
-	echo ""|./tools/make_key keys/platform   "/CN=Platform key for MIUI7K/" ; true
-	echo ""|./tools/make_key keys/releasekey "/CN=Release key for MIUI7K/" ; true
+	echo ""|./tools/make_key keys/shared     "/CN=Shared key for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/testkey    "/CN=Testkey for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/media      "/CN=Media key for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/platform   "/CN=Platform key for $(MIUI_VERSION)/" ; true
+	echo ""|./tools/make_key keys/releasekey "/CN=Release key for $(MIUI_VERSION)/" ; true
 
 FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@echo "Unpacking origin $(ORIGIN)"
@@ -53,10 +54,10 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@echo "Installing frameworks"
 	@rm -rf tmp/
 	@mkdir -p tmp
-	@tools/apktool/apktool if FW/system/framework/framework-res.apk -t MIUI7K -p tmp/frameworks
-	@tools/apktool/apktool if FW/system/app/miui.apk -t MIUI7K -p tmp/frameworks
-	@tools/apktool/apktool if FW/system/framework/framework-ext-res.apk -t MIUI7K -p tmp/frameworks
-	@tools/apktool/apktool if FW/system/app/miuisystem.apk -t MIUI7K -p tmp/frameworks
+	@tools/apktool/apktool if FW/system/framework/framework-res.apk -t $(MIUI_VERSION) -p tmp/frameworks
+	@tools/apktool/apktool if FW/system/app/miui.apk -t $(MIUI_VERSION) -p tmp/frameworks
+	@tools/apktool/apktool if FW/system/framework/framework-ext-res.apk -t $(MIUI_VERSION) -p tmp/frameworks
+	@tools/apktool/apktool if FW/system/app/miuisystem.apk -t $(MIUI_VERSION) -p tmp/frameworks
 
 	@echo "Applying SMALI patches"
 	@for patch in `find addons/ -name *-SMALI-*.patch -type f|sort --field-separator=/ --key=3`; do \
@@ -65,7 +66,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 		path="`find FW/ -name $$file`"; \
 		echo "Applying $$patch to $$file ($$path)"; \
 		cd tmp/; \
-		../tools/apktool/apktool d -f -p frameworks -t MIUI7K "../$$path" -o "$$file"; \
+		../tools/apktool/apktool d -f -p frameworks -t $(MIUI_VERSION) "../$$path" -o "$$file"; \
 		git init; \
 		git add "$$file"; \
 		git commit -m "Before patch $$patch"; \
