@@ -146,7 +146,7 @@ $(FW_DIR)/boot.img: boot boot/kernel.zImage boot/dt.img boot/ramdisk.cpio.gz too
 	@./tools/bootimg/mkbootimg \
 	--kernel boot/kernel.zImage \
 	--ramdisk boot/ramdisk.cpio.gz \
-	--cmdline "$(CMDLINE)" \
+	--cmdline "androidboot.selinux=permissive $(CMDLINE)" \
 	--base 00000000 \
 	--pagesize 2048 \
 	--dt boot/dt.img \
