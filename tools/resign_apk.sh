@@ -6,7 +6,7 @@ resign_file(){
   key="$(grep "/$appname.apk$" media.list platform.list shared.list testkey.list|cut -d . -f 1)"
   if [ ! "q$key" = "q" ]; then
     echo Resigning $apk using $key key
-    java -jar tools/signapk.jar -a 4 keys/${keypath}/${key}.x509.pem keys/${keypath}/${key}.pk8 $apk $apk-signed
+    java -jar tools/signapk.jar -a 4 keys/${keypath}/${key}.x509.pem keys/${keypath}/${key}.pk8 $apk $apk-signed || exit 1
     mv $apk-signed $apk
   else
     echo Cannot determine signing key for $apk - assuming presigned
