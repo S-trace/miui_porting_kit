@@ -1,0 +1,30 @@
+From b597d5f89ffdd15398e7188409ad8e8fe922172a Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Sun, 14 Aug 2016 17:34:22 +0300
+Subject: [PATCH] [SMALI] Updater.apk: Hide main activity
+
+Let's not confuse users with two updaters
+---
+ Updater.apk/AndroidManifest.xml | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/Updater.apk/AndroidManifest.xml b/Updater.apk/AndroidManifest.xml
+index 6888e37..a7a4af4 100644
+--- a/Updater.apk/AndroidManifest.xml
++++ b/Updater.apk/AndroidManifest.xml
+@@ -45,12 +45,6 @@
+     <permission android:name="com.android.updater.permission.RECEIVE_BROADCAST" android:protectionLevel="signatureOrSystem"/>
+     <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:name=".Application" android:supportsRtl="true" android:theme="@style/AppTheme">
+         <uses-library android:name="cloud-common.jar"/>
+-        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="com.android.updater.MainActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Light.Immersion">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN"/>
+-                <category android:name="android.intent.category.LAUNCHER"/>
+-            </intent-filter>
+-        </activity>
+         <activity android:label="@string/menu_title_current_version_log" android:launchMode="singleTop" android:name="com.android.updater.CurrentLogActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Light">
+             <intent-filter>
+                 <action android:name="android.intent.action.CURRENTLOG"/>
+-- 
+2.5.0
+
