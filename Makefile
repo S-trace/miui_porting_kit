@@ -76,7 +76,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 		if [ -d "$$extras_dir" ]; then echo "Copying extras from $$extras_dir"; cp -rvf  $$extras_dir/* $$file/; else echo "Extras dir '$$extras_dir' not found"; fi; \
 		find -name *.orig -delete; \
 		echo origin md5sum: `md5sum "../$$path"`; \
-		../tools/apktool/apktool b -p frameworks "$$file" -o "../$$path"; \
+		../tools/apktool/apktool b -p frameworks "$$file" -o "../$$path" || exit 1; \
 		echo new md5sum: `md5sum "../$$path"`; \
 		cd - ; \
 	done
