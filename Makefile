@@ -66,7 +66,12 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 		echo "Applying $$patch to $$file ($$path)"; \
 		cd tmp/; \
 		../tools/apktool/apktool d -f -p frameworks -t MIUI7K "../$$path" -o "$$file"; \
+		git init; \
+		git add "$$file"; \
+		git commit -m "Before patch $$patch"; \
 		patch -p1 < ../$$patch || exit 1; \
+		git add .; \
+		git commit -m "After patch $$patch"; \
 		extras_dir="../`dirname $$patch`/$$file"; \
 		if [ -d "$$extras_dir" ]; then echo "Copying extras from $$extras_dir"; cp -rvf  $$extras_dir/* $$file/; else echo "Extras dir '$$extras_dir' not found"; fi; \
 		find -name *.orig -delete; \
@@ -121,7 +126,17 @@ boot: $(shell find addons/*/boot/ -type f) tools/bootimg/unpackbootimg
 	@echo "Installing boot addons"
 	@cp -r addons/*/boot/* boot/
 	@echo "Applying boot patches"
-	@for patch in `find addons/ -name *-BOOT-*.patch -type f|sort`; do echo "Applying $$patch"; patch -p1 < $$patch || exit 1; done
+	@for patch in `find addons/ -name *-BOOT-*.patch -type f|sort`; do \
+	echo "Applying $$patch"; \
+	cd boot/ ; \
+	git init; \
+	git add .; \
+	git commit -m "Before patch $$patch"; \
+	patch -p1 < ../$$patch || exit 1; \
+	git add .; \
+	git commit -m "After patch $$patch"; \
+	cd - ; \
+	done
 	@find -name *.orig -delete
 
 
