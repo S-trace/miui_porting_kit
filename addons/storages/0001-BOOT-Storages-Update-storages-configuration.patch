@@ -1,0 +1,99 @@
+From c60b0e53ce4f82cf9f7361abf19dcbc25152801d Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Wed, 17 Aug 2016 01:33:35 +0300
+Subject: [PATCH] [BOOT] Storages: Update storages configuration
+
+Vold binary taken from cm-11-20160805-1332-d10f.zip by acdev
+---
+ ramdisk/fstab.qcom   |  4 +---
+ ramdisk/init.qcom.rc | 29 +++++++++++++++++------------
+ 2 files changed, 18 insertions(+), 15 deletions(-)
+
+diff --git a/ramdisk/fstab.qcom b/ramdisk/fstab.qcom
+index 808d804..cc5c117 100644
+--- a/ramdisk/fstab.qcom
++++ b/ramdisk/fstab.qcom
+@@ -7,6 +7,4 @@
+ 
+ #<src>                                                <mnt_point>          <type>  <mnt_flags and options>                             <fs_mgr_flags>
+ /dev/block/platform/msm_sdcc.1/by-name/system         /system              ext4    ro,barrier=1                                        wait
+-/dev/block/platform/msm_sdcc.1/by-name/userdata       /data                ext4    nosuid,nodev,barrier=1,noauto_da_alloc,discard      wait,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/bk1
+-/devices/msm_sdcc.2/mmc_host                          /storage/sdcard1     vfat    nosuid,nodev                                        wait,voldmanaged=sdcard1:auto
+-/devices/platform/msm_hsusb_host/usb1                 /storage/usbotg      vfat    nosuid,nodev                                        wait,voldmanaged=usbotg:auto
++/dev/block/platform/msm_sdcc.1/by-name/userdata       /data                ext4    nosuid,nodev,barrier=1,noauto_da_alloc,discard      wait,check,encryptable=footer
+diff --git a/ramdisk/init.qcom.rc b/ramdisk/init.qcom.rc
+index 4b01a8c..f7ae4b5 100755
+--- a/ramdisk/init.qcom.rc
++++ b/ramdisk/init.qcom.rc
+@@ -38,23 +38,24 @@ on init
+     mkdir /mnt/shell/emulated 0700 shell shell
+     mkdir /storage/emulated 0555 root root
+     mkdir /storage/emulated/legacy 0555 root root
++    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+     mkdir /mnt/media_rw/uicc0 0700 media_rw media_rw
+     mkdir /mnt/media_rw/uicc1 0700 media_rw media_rw
++    mkdir /storage/sdcard0 0700 root root
+     mkdir /storage/sdcard1 0700 root root
+     mkdir /storage/uicc0 0700 root root
+     mkdir /storage/usbotg 0700 root root
+ 
+-    export EXTERNAL_STORAGE /storage/emulated/legacy
++    export EXTERNAL_STORAGE /storage/sdcard0
+     export SECONDARY_STORAGE /storage/sdcard1
+-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+-    export EMULATED_STORAGE_TARGET /storage/emulated
++#    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
++#    export EMULATED_STORAGE_TARGET /storage/emulated
+ 
+     # Support legacy paths
+-    symlink /storage/emulated/legacy /sdcard
+-    symlink /storage/emulated/legacy /mnt/sdcard
+-    symlink /storage/emulated/legacy /storage/sdcard0
++    symlink /storage/sdcard0 /sdcard
++    symlink /storage/sdcard0 /mnt/sdcard
+ 
+ on early-boot
+     # set RLIMIT_MEMLOCK to 64MB
+@@ -189,8 +190,8 @@ on boot
+ # msm specific files that need to be created on /data
+ on post-fs-data
+     # we will remap this as /mnt/sdcard with the sdcard fuse tool
+-    mkdir /data/media 0770 media_rw media_rw
+-    chown media_rw media_rw /data/media
++#    mkdir /data/media 0770 media_rw media_rw
++#    chown media_rw media_rw /data/media
+ 
+     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+ 
+@@ -752,8 +753,12 @@ service profiler_daemon /system/bin/profiler_daemon
+     group root
+     disabled
+ 
+-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
++#service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
++#    class late_start
++
++service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+     class late_start
++    disabled
+ 
+ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+     class late_start
+@@ -768,9 +773,9 @@ service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbotg /
+     disabled
+ 
+ # Binding fuse mount point to /storage/emulated/legacy
+-on property:init.svc.sdcard=running
+-    wait /mnt/shell/emulated/0
+-    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
++#on property:init.svc.sdcard=running
++#    wait /mnt/shell/emulated/0
++#    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
+ 
+ service hcidump /system/bin/sh /system/etc/hcidump.sh
+     user bluetooth
+-- 
+2.7.4
+
