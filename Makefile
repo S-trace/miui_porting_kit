@@ -110,8 +110,8 @@ boot/ramdisk.cpio.gz: $(shell find boot/ramdisk/ -type f|sed 's/ /\\ /g') Makefi
 	@mkdir -p boot/ramdisk/system
 	@mkdir -p boot/ramdisk/persist
 	@echo "Fixing permissions"
-	@chmod 750 boot/ramdisk/init*.rc boot/ramdisk/fstab.* boot/ramdisk/*.prop
-	@chmod 640 boot/ramdisk/ueventd*.rc
+	@chmod 750 boot/ramdisk/init*.rc
+	@chmod 640 boot/ramdisk/ueventd*.rc boot/ramdisk/fstab.* boot/ramdisk/*.prop
 	@echo "Packing ramdisk"
 	@cd boot/ramdisk; find | cpio -o -H newc --owner root:root | gzip -9 > ../ramdisk.cpio.gz
 
