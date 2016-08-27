@@ -47,7 +47,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@echo "Applying FW patches"
 	@for patch in `find addons/ -name *-FW-*.patch -type f|sort`; do echo "Applying $$patch"; patch -p1 < $$patch || exit 1; done
 	@find -name *.orig -delete
-	
+
 	@echo "Determining signing keys"
 	@./tools/determine_signing_keys.sh $(FW_DIR)
 
@@ -119,7 +119,7 @@ boot: $(shell find addons/*/boot/ -type f) tools/bootimg/unpackbootimg
 	@echo "Unpacking origin boot.img"
 	@mkdir -p boot/ramdisk
 	@unzip $(ORIGIN) boot.img -d boot/
-	@cd boot/; ../tools/bootimg/unpackbootimg -i boot.img; 
+	@cd boot/; ../tools/bootimg/unpackbootimg -i boot.img;
 	@echo "Unpacking origin ramdisk"
 	@cd boot/ramdisk; zcat ../boot.img-ramdisk.gz |cpio -i
 	@echo "Cleaning up"
