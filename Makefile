@@ -1,9 +1,9 @@
-MIUI_VERSION = "MIUI7K"
+MIUI_VERSION = "MIUI8K"
 CMDLINE = console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 OTAVER := miui-$(shell date +%Y%m%d-%H%M)-d10f-$(MIUI_VERSION)
-ZIP     = MIUI7_d10f_by_S-trace_latest.zip
+ZIP     = MIUI8_d10f_by_S-trace_latest.zip
 NAME    = $(OTAVER).zip
-ORIGIN  = $(shell ls xiaomi.eu_multi_armani_*_v7-4.4.zip|sort|tail -n1)
+ORIGIN  = $(shell ls xiaomi.eu_multi_HM1SWC_*_v8-4.4.zip|sort|tail -n1)
 FW_DIR  = FW
 .PHONY: all clean tools ramdisk boot.img zip sideload rboot fboot install otaver # This rules does not creating files
 .SUFFIXES: # Disabling built-in Make rules
