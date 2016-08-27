@@ -27,7 +27,6 @@ keys/$(MIUI_VERSION):
 	echo ""|./tools/make_key keys/$(MIUI_VERSION)/testkey    "/CN=Testkey for $(MIUI_VERSION)/" ; true
 	echo ""|./tools/make_key keys/$(MIUI_VERSION)/media      "/CN=Media key for $(MIUI_VERSION)/" ; true
 	echo ""|./tools/make_key keys/$(MIUI_VERSION)/platform   "/CN=Platform key for $(MIUI_VERSION)/" ; true
-	echo ""|./tools/make_key keys/$(MIUI_VERSION)/releasekey "/CN=Release key for $(MIUI_VERSION)/" ; true
 
 FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@echo "Unpacking origin $(ORIGIN)"
@@ -163,7 +162,7 @@ $(ZIP): $(shell find $(FW_DIR) -type f|sed 's/ /\\ /g') FW $(FW_DIR)/boot.img Ma
 	@rm -f "$(ZIP)"
 	@cd $(FW_DIR)/; zip -r "../$(ZIP)-unsigned" *
 	@echo "Signing flashable ZIP"
-	@java -jar tools/signapk.jar -a 4 keys/$(MIUI_VERSION)/releasekey.x509.pem keys/$(MIUI_VERSION)/releasekey.pk8 "$(ZIP)-unsigned" "$(ZIP)"
+	@java -jar tools/signapk.jar -a 4 keys/$(MIUI_VERSION)/platform.x509.pem keys/$(MIUI_VERSION)/platform.pk8 "$(ZIP)-unsigned" "$(ZIP)"
 	@rm "$(ZIP)-unsigned"
 	@ln "$(ZIP)" "$(NAME)"
 	@echo $(ZIP) \($(NAME)\) built
