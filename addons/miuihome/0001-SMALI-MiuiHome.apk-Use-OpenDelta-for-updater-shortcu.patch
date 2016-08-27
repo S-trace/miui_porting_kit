@@ -1,6 +1,6 @@
-From 1297f3925e2942ea67c7efeed9d0ccb093b98cb7 Mon Sep 17 00:00:00 2001
+From 4546d775873324758464176004965e2df4ce7213 Mon Sep 17 00:00:00 2001
 From: S-trace <S-trace@list.ru>
-Date: Sun, 14 Aug 2016 17:44:37 +0300
+Date: Sat, 27 Aug 2016 23:44:30 +0300
 Subject: [PATCH] [SMALI] MiuiHome.apk: Use OpenDelta for updater shortcut
 
 ---
@@ -9,38 +9,57 @@ Subject: [PATCH] [SMALI] MiuiHome.apk: Use OpenDelta for updater shortcut
  .../res/xml-sw720dp-xhdpi-v13/i18n_default_workspace_rotatable4x5.xml   | 2 +-
  .../res/xml-sw720dp-xhdpi-v13/i18n_default_workspace_rotatable4x6.xml   | 2 +-
  MiuiHome.apk/res/xml/cm_default_workspace3x4.xml                        | 2 +-
+ MiuiHome.apk/res/xml/cm_default_workspace3x4_private_model.xml          | 2 +-
  MiuiHome.apk/res/xml/cm_default_workspace4x5.xml                        | 2 +-
+ MiuiHome.apk/res/xml/cm_default_workspace4x5_private_model.xml          | 2 +-
  MiuiHome.apk/res/xml/cm_default_workspace4x6.xml                        | 2 +-
+ MiuiHome.apk/res/xml/cm_default_workspace4x6_private_model.xml          | 2 +-
  MiuiHome.apk/res/xml/cu_default_workspace3x4.xml                        | 2 +-
+ MiuiHome.apk/res/xml/cu_default_workspace3x4_private_model.xml          | 2 +-
  MiuiHome.apk/res/xml/cu_default_workspace4x5.xml                        | 2 +-
+ MiuiHome.apk/res/xml/cu_default_workspace4x5_private_model.xml          | 2 +-
  MiuiHome.apk/res/xml/cu_default_workspace4x6.xml                        | 2 +-
+ MiuiHome.apk/res/xml/cu_default_workspace4x6_private_model.xml          | 2 +-
  MiuiHome.apk/res/xml/default_workspace3x4.xml                           | 2 +-
+ MiuiHome.apk/res/xml/default_workspace3x4_private_model.xml             | 2 +-
  MiuiHome.apk/res/xml/default_workspace4x5.xml                           | 2 +-
+ MiuiHome.apk/res/xml/default_workspace4x5_private_model.xml             | 2 +-
  MiuiHome.apk/res/xml/default_workspace4x6.xml                           | 2 +-
+ MiuiHome.apk/res/xml/default_workspace4x6_private_model.xml             | 2 +-
  MiuiHome.apk/res/xml/default_workspace_rotatable.xml                    | 2 +-
  MiuiHome.apk/res/xml/i18n_default_workspace3x4.xml                      | 2 +-
+ MiuiHome.apk/res/xml/i18n_default_workspace3x4_private_model.xml        | 2 +-
  MiuiHome.apk/res/xml/i18n_default_workspace4x5.xml                      | 2 +-
+ MiuiHome.apk/res/xml/i18n_default_workspace4x5_private_model.xml        | 2 +-
  MiuiHome.apk/res/xml/i18n_default_workspace4x6.xml                      | 2 +-
+ MiuiHome.apk/res/xml/i18n_default_workspace4x6_private_model.xml        | 2 +-
+ MiuiHome.apk/res/xml/in_i18n_default_workspace4x5.xml                   | 2 +-
+ MiuiHome.apk/res/xml/in_i18n_default_workspace4x5_private_model.xml     | 2 +-
+ MiuiHome.apk/res/xml/in_i18n_default_workspace4x6.xml                   | 2 +-
+ MiuiHome.apk/res/xml/in_i18n_default_workspace4x6_private_model.xml     | 2 +-
  MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4.xml                 | 2 +-
+ MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4_private_model.xml   | 2 +-
  MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5.xml                 | 2 +-
+ MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5_private_model.xml   | 2 +-
  MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6.xml                 | 2 +-
- 20 files changed, 20 insertions(+), 20 deletions(-)
+ MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6_private_model.xml   | 2 +-
+ 39 files changed, 39 insertions(+), 39 deletions(-)
 
 diff --git a/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x5.xml b/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x5.xml
-index 44fcefd..6779e81 100644
+index 38e41eb..6fe655d 100644
 --- a/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x5.xml
 +++ b/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x5.xml
 @@ -26,7 +26,7 @@
-     <favorite launcher:className="com.duokan.hdreader.DkReaderActivity" launcher:packageName="com.duokan.hdreader" launcher:screen="1" launcher:x="1" launcher:y="3" />
+     <favorite launcher:className="com.xiaomi.jr.CTAActivity" launcher:packageName="com.xiaomi.jr" launcher:screen="1" launcher:x="1" launcher:y="3" />
      <favorite launcher:className="com.android.fileexplorer.FileExplorerTabActivity" launcher:packageName="com.android.fileexplorer" launcher:screen="1" launcher:x="2" launcher:y="3" />
      <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="0" launcher:y="0" />
 -    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="1" launcher:y="0" />
 +    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="1" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="2" launcher:y="0" />
-     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="3" launcher:y="0" />
-     <favorite launcher:className="com.xiaomi.jr.CTAActivity" launcher:packageName="com.xiaomi.jr" launcher:container="1" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.mi.misupport.activity.MainActivity" launcher:packageName="com.mi.misupport" launcher:container="1" launcher:x="3" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="4" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x6.xml b/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x6.xml
-index 5b87dc9..afdb94c 100644
+index 04753fe..cf69b36 100644
 --- a/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x6.xml
 +++ b/MiuiHome.apk/res/xml-sw720dp-xhdpi-v13/default_workspace_rotatable4x6.xml
 @@ -24,7 +24,7 @@
@@ -79,7 +98,7 @@ index d2a408b..1d98ef9 100644
      <favorite launcher:className="com.android.vending.AssetBrowserActivity" launcher:packageName="com.android.vending" launcher:screen="1" launcher:x="1" launcher:y="3" />
      <favorite launcher:className="com.google.android.maps.MapsActivity" launcher:packageName="com.google.android.apps.maps" launcher:screen="1" launcher:x="2" launcher:y="3" />
 diff --git a/MiuiHome.apk/res/xml/cm_default_workspace3x4.xml b/MiuiHome.apk/res/xml/cm_default_workspace3x4.xml
-index 522ec6b..e47951c 100644
+index a58b095..6bdd111 100644
 --- a/MiuiHome.apk/res/xml/cm_default_workspace3x4.xml
 +++ b/MiuiHome.apk/res/xml/cm_default_workspace3x4.xml
 @@ -15,7 +15,7 @@
@@ -91,8 +110,21 @@ index 522ec6b..e47951c 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/cm_default_workspace3x4_private_model.xml b/MiuiHome.apk/res/xml/cm_default_workspace3x4_private_model.xml
+index 56f7545..96d2827 100644
+--- a/MiuiHome.apk/res/xml/cm_default_workspace3x4_private_model.xml
++++ b/MiuiHome.apk/res/xml/cm_default_workspace3x4_private_model.xml
+@@ -14,7 +14,7 @@
+     <favorite launcher:className="com.android.vending.AssetBrowserActivity" launcher:packageName="com.android.vending" launcher:screen="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="1" launcher:x="1" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="2" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="2" launcher:y="0" />
+     <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/cm_default_workspace4x5.xml b/MiuiHome.apk/res/xml/cm_default_workspace4x5.xml
-index 4b2a7b7..0613dfe 100644
+index 57f2130..3eaf058 100644
 --- a/MiuiHome.apk/res/xml/cm_default_workspace4x5.xml
 +++ b/MiuiHome.apk/res/xml/cm_default_workspace4x5.xml
 @@ -14,7 +14,7 @@
@@ -104,8 +136,21 @@ index 4b2a7b7..0613dfe 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/cm_default_workspace4x5_private_model.xml b/MiuiHome.apk/res/xml/cm_default_workspace4x5_private_model.xml
+index 2c3031f..3cbf629 100644
+--- a/MiuiHome.apk/res/xml/cm_default_workspace4x5_private_model.xml
++++ b/MiuiHome.apk/res/xml/cm_default_workspace4x5_private_model.xml
+@@ -23,7 +23,7 @@
+     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="10" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="11" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="11" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="12" launcher:y="0" />
+     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="14" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/cm_default_workspace4x6.xml b/MiuiHome.apk/res/xml/cm_default_workspace4x6.xml
-index 7fed49d..97e841c 100644
+index a15365a..0d0a376 100644
 --- a/MiuiHome.apk/res/xml/cm_default_workspace4x6.xml
 +++ b/MiuiHome.apk/res/xml/cm_default_workspace4x6.xml
 @@ -18,7 +18,7 @@
@@ -117,11 +162,24 @@ index 7fed49d..97e841c 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/cm_default_workspace4x6_private_model.xml b/MiuiHome.apk/res/xml/cm_default_workspace4x6_private_model.xml
+index 1abf752..8fc10ff 100644
+--- a/MiuiHome.apk/res/xml/cm_default_workspace4x6_private_model.xml
++++ b/MiuiHome.apk/res/xml/cm_default_workspace4x6_private_model.xml
+@@ -27,7 +27,7 @@
+     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="10" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="11" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="11" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="12" launcher:y="0" />
+     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="14" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/cu_default_workspace3x4.xml b/MiuiHome.apk/res/xml/cu_default_workspace3x4.xml
-index 35de922..f5573dc 100644
+index 07464dd..7007e03 100644
 --- a/MiuiHome.apk/res/xml/cu_default_workspace3x4.xml
 +++ b/MiuiHome.apk/res/xml/cu_default_workspace3x4.xml
-@@ -22,7 +22,7 @@
+@@ -21,7 +21,7 @@
      <favorite launcher:className="com.android.vending.AssetBrowserActivity" launcher:packageName="com.android.vending" launcher:screen="2" launcher:x="0" launcher:y="0" />
      <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="0" launcher:y="0" />
      <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="1" launcher:x="1" launcher:y="0" />
@@ -130,12 +188,25 @@ index 35de922..f5573dc 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/cu_default_workspace3x4_private_model.xml b/MiuiHome.apk/res/xml/cu_default_workspace3x4_private_model.xml
+index 56f7545..96d2827 100644
+--- a/MiuiHome.apk/res/xml/cu_default_workspace3x4_private_model.xml
++++ b/MiuiHome.apk/res/xml/cu_default_workspace3x4_private_model.xml
+@@ -14,7 +14,7 @@
+     <favorite launcher:className="com.android.vending.AssetBrowserActivity" launcher:packageName="com.android.vending" launcher:screen="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="1" launcher:x="1" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="2" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="2" launcher:y="0" />
+     <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/cu_default_workspace4x5.xml b/MiuiHome.apk/res/xml/cu_default_workspace4x5.xml
-index 95a7d2a..9e23499 100644
+index 700f337..83d3da7 100644
 --- a/MiuiHome.apk/res/xml/cu_default_workspace4x5.xml
 +++ b/MiuiHome.apk/res/xml/cu_default_workspace4x5.xml
 @@ -30,7 +30,7 @@
-     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="1" launcher:x="7" launcher:y="0" />
      <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="8" launcher:y="0" />
      <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="9" launcher:y="0" />
 -    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="10" launcher:y="0" />
@@ -143,12 +214,25 @@ index 95a7d2a..9e23499 100644
      <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="11" launcher:y="0" />
      <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="12" launcher:y="0" />
      <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="13" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/cu_default_workspace4x5_private_model.xml b/MiuiHome.apk/res/xml/cu_default_workspace4x5_private_model.xml
+index 2c3031f..3cbf629 100644
+--- a/MiuiHome.apk/res/xml/cu_default_workspace4x5_private_model.xml
++++ b/MiuiHome.apk/res/xml/cu_default_workspace4x5_private_model.xml
+@@ -23,7 +23,7 @@
+     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="10" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="11" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="11" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="12" launcher:y="0" />
+     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="14" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/cu_default_workspace4x6.xml b/MiuiHome.apk/res/xml/cu_default_workspace4x6.xml
-index 046afef..7120936 100644
+index 68f5389..78787ca 100644
 --- a/MiuiHome.apk/res/xml/cu_default_workspace4x6.xml
 +++ b/MiuiHome.apk/res/xml/cu_default_workspace4x6.xml
 @@ -34,7 +34,7 @@
-     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="1" launcher:x="7" launcher:y="0" />
      <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="8" launcher:y="0" />
      <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="9" launcher:y="0" />
 -    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="10" launcher:y="0" />
@@ -156,8 +240,21 @@ index 046afef..7120936 100644
      <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="11" launcher:y="0" />
      <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="12" launcher:y="0" />
      <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="13" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/cu_default_workspace4x6_private_model.xml b/MiuiHome.apk/res/xml/cu_default_workspace4x6_private_model.xml
+index 1abf752..8fc10ff 100644
+--- a/MiuiHome.apk/res/xml/cu_default_workspace4x6_private_model.xml
++++ b/MiuiHome.apk/res/xml/cu_default_workspace4x6_private_model.xml
+@@ -27,7 +27,7 @@
+     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="10" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="11" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="11" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="12" launcher:y="0" />
+     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="14" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/default_workspace3x4.xml b/MiuiHome.apk/res/xml/default_workspace3x4.xml
-index d19abcf..e82f73d 100644
+index d62fb02..04b86ff 100644
 --- a/MiuiHome.apk/res/xml/default_workspace3x4.xml
 +++ b/MiuiHome.apk/res/xml/default_workspace3x4.xml
 @@ -15,7 +15,7 @@
@@ -169,32 +266,71 @@ index d19abcf..e82f73d 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/default_workspace3x4_private_model.xml b/MiuiHome.apk/res/xml/default_workspace3x4_private_model.xml
+index 56f7545..96d2827 100644
+--- a/MiuiHome.apk/res/xml/default_workspace3x4_private_model.xml
++++ b/MiuiHome.apk/res/xml/default_workspace3x4_private_model.xml
+@@ -14,7 +14,7 @@
+     <favorite launcher:className="com.android.vending.AssetBrowserActivity" launcher:packageName="com.android.vending" launcher:screen="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="1" launcher:x="1" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="2" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="2" launcher:y="0" />
+     <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/default_workspace4x5.xml b/MiuiHome.apk/res/xml/default_workspace4x5.xml
-index a34ff35..e8b3d9e 100644
+index 6d8257e..f4a01ce 100644
 --- a/MiuiHome.apk/res/xml/default_workspace4x5.xml
 +++ b/MiuiHome.apk/res/xml/default_workspace4x5.xml
+@@ -21,7 +21,7 @@
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="6" launcher:y="0" />
+     <favorite launcher:className="com.miui.compass.CompassActivity" launcher:packageName="com.miui.compass" launcher:container="1" launcher:x="7" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="8" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="1" launcher:x="10" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="11" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/default_workspace4x5_private_model.xml b/MiuiHome.apk/res/xml/default_workspace4x5_private_model.xml
+index 2c3031f..3cbf629 100644
+--- a/MiuiHome.apk/res/xml/default_workspace4x5_private_model.xml
++++ b/MiuiHome.apk/res/xml/default_workspace4x5_private_model.xml
 @@ -23,7 +23,7 @@
-     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="7" launcher:y="0" />
-     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="8" launcher:y="0" />
-     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="9" launcher:y="0" />
--    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="10" launcher:y="0" />
-+    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="10" launcher:y="0" />
-     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="11" launcher:y="0" />
-     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="12" launcher:y="0" />
-     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="10" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="11" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="11" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="12" launcher:y="0" />
+     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="14" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/default_workspace4x6.xml b/MiuiHome.apk/res/xml/default_workspace4x6.xml
-index 6ecf759..edd0117 100644
+index 1c945ea..e593b6a 100644
 --- a/MiuiHome.apk/res/xml/default_workspace4x6.xml
 +++ b/MiuiHome.apk/res/xml/default_workspace4x6.xml
+@@ -25,7 +25,7 @@
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="6" launcher:y="0" />
+     <favorite launcher:className="com.miui.compass.CompassActivity" launcher:packageName="com.miui.compass" launcher:container="1" launcher:x="7" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="8" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="1" launcher:x="10" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="11" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/default_workspace4x6_private_model.xml b/MiuiHome.apk/res/xml/default_workspace4x6_private_model.xml
+index 1abf752..8fc10ff 100644
+--- a/MiuiHome.apk/res/xml/default_workspace4x6_private_model.xml
++++ b/MiuiHome.apk/res/xml/default_workspace4x6_private_model.xml
 @@ -27,7 +27,7 @@
-     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="7" launcher:y="0" />
-     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="8" launcher:y="0" />
-     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="9" launcher:y="0" />
--    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="10" launcher:y="0" />
-+    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="10" launcher:y="0" />
-     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="11" launcher:y="0" />
-     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="12" launcher:y="0" />
-     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.barcodescanner.activity.CaptureActivity" launcher:packageName="com.miui.barcodescanner" launcher:container="1" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="1" launcher:x="10" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="11" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="11" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.mitv.phone.remotecontroller.HoriWidgetMainActivityV2" launcher:packageName="com.duokan.phone.remotecontroller" launcher:container="1" launcher:x="12" launcher:y="0" />
+     <favorite launcher:className="com.miui.virtualsim.ui.MainActivity" launcher:packageName="com.miui.virtualsim" launcher:container="1" launcher:x="13" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainActivity" launcher:packageName="com.miui.bugreport" launcher:container="1" launcher:x="14" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/default_workspace_rotatable.xml b/MiuiHome.apk/res/xml/default_workspace_rotatable.xml
 index 019a5e3..0c15637 100644
 --- a/MiuiHome.apk/res/xml/default_workspace_rotatable.xml
@@ -221,6 +357,19 @@ index a3a14b8..b9da939 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/i18n_default_workspace3x4_private_model.xml b/MiuiHome.apk/res/xml/i18n_default_workspace3x4_private_model.xml
+index ebfe70b..dcfe792 100644
+--- a/MiuiHome.apk/res/xml/i18n_default_workspace3x4_private_model.xml
++++ b/MiuiHome.apk/res/xml/i18n_default_workspace3x4_private_model.xml
+@@ -20,7 +20,7 @@
+     <favorite launcher:className="com.miui.securityscan.MainActivity" launcher:packageName="com.miui.securitycenter" launcher:screen="2" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="1" launcher:x="1" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="2" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="2" launcher:y="0" />
+     <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/i18n_default_workspace4x5.xml b/MiuiHome.apk/res/xml/i18n_default_workspace4x5.xml
 index 2b5f797..080460f 100644
 --- a/MiuiHome.apk/res/xml/i18n_default_workspace4x5.xml
@@ -234,6 +383,19 @@ index 2b5f797..080460f 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/i18n_default_workspace4x5_private_model.xml b/MiuiHome.apk/res/xml/i18n_default_workspace4x5_private_model.xml
+index 64dd613..226c10b 100644
+--- a/MiuiHome.apk/res/xml/i18n_default_workspace4x5_private_model.xml
++++ b/MiuiHome.apk/res/xml/i18n_default_workspace4x5_private_model.xml
+@@ -20,7 +20,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/i18n_default_workspace4x6.xml b/MiuiHome.apk/res/xml/i18n_default_workspace4x6.xml
 index 22728a1..2fe51e5 100644
 --- a/MiuiHome.apk/res/xml/i18n_default_workspace4x6.xml
@@ -247,8 +409,73 @@ index 22728a1..2fe51e5 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/i18n_default_workspace4x6_private_model.xml b/MiuiHome.apk/res/xml/i18n_default_workspace4x6_private_model.xml
+index 51c9670..6d6eea9 100644
+--- a/MiuiHome.apk/res/xml/i18n_default_workspace4x6_private_model.xml
++++ b/MiuiHome.apk/res/xml/i18n_default_workspace4x6_private_model.xml
+@@ -20,7 +20,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5.xml b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5.xml
+index bfdc5f5..7fc40dd 100644
+--- a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5.xml
++++ b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5.xml
+@@ -40,7 +40,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5_private_model.xml b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5_private_model.xml
+index 64dd613..226c10b 100644
+--- a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5_private_model.xml
++++ b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x5_private_model.xml
+@@ -20,7 +20,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6.xml b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6.xml
+index f87790d..9d256a1 100644
+--- a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6.xml
++++ b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6.xml
+@@ -40,7 +40,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6_private_model.xml b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6_private_model.xml
+index 51c9670..6d6eea9 100644
+--- a/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6_private_model.xml
++++ b/MiuiHome.apk/res/xml/in_i18n_default_workspace4x6_private_model.xml
+@@ -20,7 +20,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4.xml b/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4.xml
-index fc8d757..34dea75 100644
+index b379256..a90a3e1 100644
 --- a/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4.xml
 +++ b/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4.xml
 @@ -25,7 +25,7 @@
@@ -260,32 +487,71 @@ index fc8d757..34dea75 100644
      <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
      <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
      <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4_private_model.xml b/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4_private_model.xml
+index da74428..9bd40e4 100644
+--- a/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4_private_model.xml
++++ b/MiuiHome.apk/res/xml/laam_i18n_default_workspace3x4_private_model.xml
+@@ -20,7 +20,7 @@
+     <favorite launcher:className="com.miui.securityscan.MainActivity" launcher:packageName="com.miui.securitycenter" launcher:screen="2" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="1" launcher:x="0" launcher:y="0" />
+     <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="1" launcher:x="1" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="1" launcher:x="2" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="1" launcher:x="2" launcher:y="0" />
+     <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="1" launcher:x="3" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="1" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="1" launcher:x="5" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5.xml b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5.xml
-index abf184e..31713d9 100644
+index dcd0389..b9af867 100644
 --- a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5.xml
 +++ b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5.xml
-@@ -41,7 +41,7 @@
-     <favorite launcher:className="com.miui.securityscan.MainActivity" launcher:packageName="com.miui.securitycenter" launcher:screen="0" launcher:x="1" launcher:y="4" />
-     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="0" launcher:y="0" />
-     <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="2" launcher:x="1" launcher:y="0" />
--    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="2" launcher:y="0" />
-+    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="2" launcher:y="0" />
-     <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="2" launcher:x="3" launcher:y="0" />
-     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="4" launcher:y="0" />
-     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="5" launcher:y="0" />
+@@ -47,7 +47,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5_private_model.xml b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5_private_model.xml
+index 37bb0c5..7186133 100644
+--- a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5_private_model.xml
++++ b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x5_private_model.xml
+@@ -40,7 +40,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
 diff --git a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6.xml b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6.xml
-index 34766e9..852d8aa 100644
+index 3347ab7..65c16d9 100644
 --- a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6.xml
 +++ b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6.xml
-@@ -41,7 +41,7 @@
-     <favorite launcher:className="com.miui.securityscan.MainActivity" launcher:packageName="com.miui.securitycenter" launcher:screen="0" launcher:x="1" launcher:y="5" />
-     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="0" launcher:y="0" />
-     <favorite launcher:className="com.android.email.activity.Welcome" launcher:packageName="com.android.email" launcher:container="2" launcher:x="1" launcher:y="0" />
--    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="2" launcher:y="0" />
-+    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="2" launcher:y="0" />
-     <favorite launcher:className="com.android.deskclock.DeskClockTabActivity" launcher:packageName="com.android.deskclock" launcher:container="2" launcher:x="3" launcher:y="0" />
-     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="4" launcher:y="0" />
-     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="5" launcher:y="0" />
+@@ -47,7 +47,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
+diff --git a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6_private_model.xml b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6_private_model.xml
+index 754a168..a10d389 100644
+--- a/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6_private_model.xml
++++ b/MiuiHome.apk/res/xml/laam_i18n_default_workspace4x6_private_model.xml
+@@ -20,7 +20,7 @@
+     <favorite launcher:className="com.miui.fmradio.FmActivity" launcher:packageName="com.miui.fm" launcher:container="2" launcher:x="4" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.account.ui.AccountSettingsActivity" launcher:packageName="com.xiaomi.account" launcher:container="2" launcher:x="5" launcher:y="0" />
+     <favorite launcher:className="com.android.soundrecorder.SoundRecorder" launcher:packageName="com.android.soundrecorder" launcher:container="2" launcher:x="6" launcher:y="0" />
+-    <favorite launcher:className="com.android.updater.MainActivity" launcher:packageName="com.android.updater" launcher:container="2" launcher:x="7" launcher:y="0" />
++    <favorite launcher:className="eu.chainfire.opendelta.MainActivity" launcher:packageName="eu.chainfire.opendelta" launcher:container="2" launcher:x="7" launcher:y="0" />
+     <favorite launcher:className="com.miui.bugreport.ui.MainTabActivity" launcher:packageName="com.miui.bugreport" launcher:container="2" launcher:x="8" launcher:y="0" />
+     <favorite launcher:className="com.xiaomi.scanner.app.ScanActivity" launcher:packageName="com.xiaomi.scanner" launcher:container="2" launcher:x="9" launcher:y="0" />
+     <favorite launcher:className="com.android.providers.downloads.ui.DownloadList" launcher:packageName="com.android.providers.downloads.ui" launcher:container="2" launcher:x="10" launcher:y="0" />
 -- 
-2.5.0
+2.7.4
 
