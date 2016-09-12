@@ -99,6 +99,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@sed -i "s/ro.product.model=.*/ro.product.model=D10F/g" FW/system/build.prop
 	@sed -i "s/d10f-user/d10f-userdebug/g" FW/system/build.prop
 	@sed -i "s :user/ :userdebug/ g" FW/system/build.prop
+	@sed -i "/ro.adb.secure=.*/d" FW/system/build.prop
 
 ramdisk: boot/ramdisk.cpio.gz
 boot/ramdisk.cpio.gz: $(shell find boot/ramdisk/ -type f|sed 's/ /\\ /g') Makefile # ramdisk depends on all files in boot/ subdir and Makefile
