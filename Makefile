@@ -86,7 +86,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 # 	@rm -rf tmp/
 
 	@echo "Resigning APKs"
-	@for file in `find $(FW_DIR)/ -iname *.apk`; do ./tools/resign_apk.sh $$file `basename $$file|rev|cut -d . -f 2-|rev` $(MIUI_VERSION) || exit 1 ;done
+	@for file in `find $(FW_DIR)/ -iname '*.apk'`; do ./tools/resign_apk.sh $$file `basename $$file|rev|cut -d . -f 2-|rev` $(MIUI_VERSION) || exit 1 ;done
 
 	@echo "Updating build.prop data"
 	@sed -i 's/armani/d10f/g' FW/system/build.prop
