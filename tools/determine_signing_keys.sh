@@ -7,7 +7,7 @@ TESTKEY_FILE="/system/priv-app/CalendarProvider.apk"
 UNSIGNED_FILE="/system/app/TrafficControl.apk"
 GOOGLE_FILE="/system/priv-app/Phonesky.apk"
 MIUI_FILE="/system/app/MiuiVideo.apk"
-PATCHOM_FILE="/system/app/Email.apk"
+PATCHROM_FILE="/system/app/Email.apk"
 FW="$1"
 
 determine_key_hash(){
@@ -55,7 +55,7 @@ determine_key(){
     echo miui
     return
   fi
-  if [ q$FILE_HASH = q$PATCHOM_HASH ]; then
+  if [ q$FILE_HASH = q$PATCHROM_HASH ]; then
     echo $file >> patchrom.list
     echo patchrom
     return
@@ -71,7 +71,7 @@ SHARED_HASH=$(determine_key_hash $SHARED_FILE)
 TESTKEY_HASH=$(determine_key_hash $TESTKEY_FILE)
 GOOGLE_HASH=$(determine_key_hash $GOOGLE_FILE)
 MIUI_HASH=$(determine_key_hash $MIUI_FILE)
-PATCHROM_HASH=$(determine_key_hash $PATCHOM_FILE)
+PATCHROM_HASH=$(determine_key_hash $PATCHROM_FILE)
 UNSIGNED_HASH=$(determine_key_hash $UNSIGNED_FILE)
 cd -
 
@@ -82,6 +82,7 @@ echo SHARED:	$SHARED_HASH
 echo TESTKEY:	$TESTKEY_HASH 
 echo GOOGLE:	$GOOGLE_HASH 
 echo MIUI:	$MIUI_HASH 
+echo PATCHROM	$PATCHROM_HASH
 echo UNSIGNED:	$UNSIGNED_HASH
 # exit 0
 for file in $(find "$FW"/ -iname "*.jar" -or -iname "*.apk"); do 
