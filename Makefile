@@ -28,7 +28,7 @@ keys/$(MIUI_VERSION):
 	echo ""|./tools/make_key keys/$(MIUI_VERSION)/media      "/CN=Media key for $(MIUI_VERSION)/" ; true
 	echo ""|./tools/make_key keys/$(MIUI_VERSION)/platform   "/CN=Platform key for $(MIUI_VERSION)/" ; true
 
-FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
+FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys/$(MIUI_VERSION) Makefile
 	@echo "Unpacking origin $(ORIGIN)"
 	@unzip $(ORIGIN) -d $(FW_DIR)/
 
