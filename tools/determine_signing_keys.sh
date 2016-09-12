@@ -17,42 +17,51 @@ determine_key_hash(){
 
 determine_key(){
   file="$1"
-  echo "Determining key for $file... "
+  echo -n "Determining key for $file... "
   FILE_HASH="$(keytool -printcert -jarfile ./$file|grep SHA256:|tr -d '\t :')"
   rm -rf /tmp/META-INF
   if [ q$FILE_HASH = q$MEDIA_HASH ]; then
     echo $file >> media.list
+    echo media
     return
   fi
   if [ q$FILE_HASH = q$PLATFORM_HASH ]; then
     echo $file >> platform.list
+    echo platform
     return
   fi
   if [ q$FILE_HASH = q$SHARED_HASH ]; then
     echo $file >> shared.list
+    echo shared
     return
   fi
   if [ q$FILE_HASH = q$TESTKEY_HASH ]; then
     echo $file >> testkey.list
+    echo testkey
     return
   fi
   if [ q$FILE_HASH = q$UNSIGNED_HASH ]; then
     echo $file >> unsigned.list
+    echo unsigned
     return
   fi
   if [ q$FILE_HASH = q$GOOGLE_HASH ]; then
     echo $file >> google.list
+    echo google
     return
   fi
   if [ q$FILE_HASH = q$MIUI_HASH ]; then
     echo $file >> miui.list
+    echo miui
     return
   fi
   if [ q$FILE_HASH = q$PATCHOM_HASH ]; then
     echo $file >> patchrom.list
+    echo patchrom
     return
   fi
   echo $file >> unknown.list
+  echo unknown
 }
 
 cd "$FW"/
