@@ -12,16 +12,13 @@ FW="$1"
 
 determine_key_hash(){
   file="$1"
-  unzip -o ./$file META-INF/CERT.RSA -d /tmp/ > /dev/null 2>/dev/null
-  openssl pkcs7 -inform DER -print_certs -in /tmp/META-INF/CERT.RSA 2>/dev/null|md5sum|cut -d ' ' -f 1 
-  rm -rf /tmp/META-INF
+  keytool -printcert -jarfile ./$file|grep SHA256:|tr -d '\t :'
 }
 
 determine_key(){
   file="$1"
-  echo "Determining key for $file"
-  unzip -o ./$file META-INF/CERT.RSA -d /tmp/ > /dev/null
-  FILE_HASH=$(openssl pkcs7 -inform DER -print_certs -in /tmp/META-INF/CERT.RSA|md5sum|cut -d ' ' -f 1)
+  echo "Determining key for $file... "
+  FILE_HASH="$(keytool -printcert -jarfile ./$file|grep SHA256:|tr -d '\t :')"
   rm -rf /tmp/META-INF
   if [ q$FILE_HASH = q$MEDIA_HASH ]; then
     echo $file >> media.list
