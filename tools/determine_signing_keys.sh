@@ -7,6 +7,7 @@ TESTKEY_FILE="/system/priv-app/CalendarProvider.apk"
 UNSIGNED_FILE="/system/app/TrafficControl.apk"
 GOOGLE_FILE="/system/priv-app/Phonesky.apk"
 MIUI_FILE="/system/app/MiuiVideo.apk"
+PATCHOM_FILE="/system/app/Email.apk"
 FW="$1"
 
 determine_key_hash(){
@@ -50,6 +51,10 @@ determine_key(){
     echo $file >> miui.list
     return
   fi
+  if [ q$FILE_HASH = q$PATCHOM_HASH ]; then
+    echo $file >> patchrom.list
+    return
+  fi
   echo $file >> unknown.list
 }
 
@@ -60,6 +65,7 @@ SHARED_HASH=$(determine_key_hash $SHARED_FILE)
 TESTKEY_HASH=$(determine_key_hash $TESTKEY_FILE)
 GOOGLE_HASH=$(determine_key_hash $GOOGLE_FILE)
 MIUI_HASH=$(determine_key_hash $MIUI_FILE)
+PATCHROM_HASH=$(determine_key_hash $PATCHOM_FILE)
 UNSIGNED_HASH=$(determine_key_hash $UNSIGNED_FILE)
 cd -
 
