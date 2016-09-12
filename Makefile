@@ -30,7 +30,7 @@ keys/$(MIUI_VERSION):
 
 FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys/$(MIUI_VERSION) Makefile
 	@echo "Unpacking origin $(ORIGIN)"
-	@unzip $(ORIGIN) -d $(FW_DIR)/
+	@unzip -o $(ORIGIN) -d $(FW_DIR)/
 
 	@echo "Cleaning up"
 	@rm -rf $(FW_DIR)/*.mbn \
