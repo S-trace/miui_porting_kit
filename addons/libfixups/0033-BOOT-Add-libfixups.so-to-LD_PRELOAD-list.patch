@@ -1,10 +1,18 @@
 From 185cd60a57c9252b61bbc7296248c78763f0e437 Mon Sep 17 00:00:00 2001
 From: S-trace <S-trace@list.ru>
 Date: Sun, 28 Aug 2016 11:19:11 +0300
-Subject: [PATCH] [BOOT] Add libfts.so to LD_PRELOAD list
+Subject: [PATCH] [BOOT] Add libfixups.so to LD_PRELOAD list
 
-This is fixup for fts implementation in MIUI Bionic libc
+This is fixups collection:
+
+fts.c: Fixup for fts implementation in MIUI Bionic libc
 This bug is affecting Vold (ASEC management, for example).
+
+reservedVectorImpl.c: Contains fake symbols to allow stock camera libs to load
+
+vibrator.c: Reference CM-11.0 vibrator implementation
+D10F doesn't have VibeTonz support, so using default API for vibrator again
+
 ---
  ramdisk/init.target.rc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -17,8 +25,8 @@ index 9184c51..0663b09 100755
  
  # import cne init file
  on post-fs
--    export LD_PRELOAD /vendor/lib/libNimsWrap.so:/system/lib/libreservedVectorImpl.so:/system/lib/libvibrator.so
-+    export LD_PRELOAD /vendor/lib/libNimsWrap.so:/system/lib/libreservedVectorImpl.so:/system/lib/libvibrator.so:/system/lib/libfts.so
+-    export LD_PRELOAD /vendor/lib/libNimsWrap.so
++    export LD_PRELOAD /vendor/lib/libNimsWrap.so:/system/lib/libfixups.so
  
  
      chown system system /dev/sysmatdrv
