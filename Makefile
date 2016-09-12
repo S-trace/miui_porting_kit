@@ -5,7 +5,7 @@ ZIP     = MIUI8_d10f_by_S-trace_latest.zip
 NAME    = $(OTAVER).zip
 ORIGIN  = $(shell ls xiaomi.eu_multi_HM1SWC_*_v8-4.4.zip|sort|tail -n1)
 FW_DIR  = FW
-.PHONY: all clean tools ramdisk boot.img zip sideload rboot fboot install otaver keys # This rules does not creating files
+.PHONY: all clean tools ramdisk boot.img zip sideload rboot fboot install keys # This rules does not creating files
 .SUFFIXES: # Disabling built-in Make rules
 
 all:  install
@@ -100,6 +100,8 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@sed -i "s/d10f-user/d10f-userdebug/g" FW/system/build.prop
 	@sed -i "s :user/ :userdebug/ g" FW/system/build.prop
 	@sed -i "/ro.adb.secure=.*/d" FW/system/build.prop
+	@sed -i "s/ro.ota.current_rom.*//g" FW/system/build.prop
+	@echo ro.ota.current_rom=$(OTAVER) >> $(FW_DIR)/system/build.prop
 
 ramdisk: boot/ramdisk.cpio.gz
 boot/ramdisk.cpio.gz: $(shell find boot/ramdisk/ -type f|sed 's/ /\\ /g') Makefile # ramdisk depends on all files in boot/ subdir and Makefile
@@ -179,10 +181,6 @@ fboot: $(FW_DIR)/boot.img
 	adb reboot bootloader || true # not fatal
 	fastboot flash boot $(FW_DIR)/boot.img
 	fastboot boot $(FW_DIR)/boot.img
-
-otaver:
-	@sed -i "s/ro.ota.current_rom.*//g" FW/system/build.prop
-	echo ro.ota.current_rom=$(OTAVER) >> $(FW_DIR)/system/build.prop
 
 install: $(ZIP)
 	adb push -p $(ZIP) /external_sd/
