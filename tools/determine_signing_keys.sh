@@ -75,7 +75,7 @@ PATCHROM_HASH=$(determine_key_hash $PATCHROM_FILE)
 UNSIGNED_HASH=$(determine_key_hash $UNSIGNED_FILE)
 cd -
 
-rm *.list
+rm -f *.list
 echo MEDIA:	$MEDIA_HASH 
 echo PLATFORM:	$PLATFORM_HASH 
 echo SHARED:	$SHARED_HASH 
