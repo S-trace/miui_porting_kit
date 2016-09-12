@@ -54,16 +54,16 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@echo "Installing frameworks"
 	@rm -rf tmp/
 	@mkdir -p tmp
-	@tools/apktool/apktool if FW/system/framework/framework-res.apk -t $(MIUI_VERSION) -p tmp/frameworks
-	@tools/apktool/apktool if FW/system/app/miui.apk -t $(MIUI_VERSION) -p tmp/frameworks
-	@tools/apktool/apktool if FW/system/framework/framework-ext-res.apk -t $(MIUI_VERSION) -p tmp/frameworks
-	@tools/apktool/apktool if FW/system/app/miuisystem.apk -t $(MIUI_VERSION) -p tmp/frameworks
+	@tools/apktool/apktool if $(FW_DIR)/system/framework/framework-res.apk -t $(MIUI_VERSION) -p tmp/frameworks
+	@tools/apktool/apktool if $(FW_DIR)/system/app/miui.apk -t $(MIUI_VERSION) -p tmp/frameworks
+	@tools/apktool/apktool if $(FW_DIR)/system/framework/framework-ext-res.apk -t $(MIUI_VERSION) -p tmp/frameworks
+	@tools/apktool/apktool if $(FW_DIR)/system/app/miuisystem.apk -t $(MIUI_VERSION) -p tmp/frameworks
 
 	@echo "Applying SMALI patches"
 	@for patch in `find addons/ -name *-SMALI-*.patch -type f|sort --field-separator=/ --key=3`; do \
 		file="`echo $$patch|cut -d '-' -f 3`"; \
 		if ! echo $$file|fgrep -q .; then file="`echo $$patch|cut -d '-' -f 3-4`";fi ; \
-		path="`find FW/ -name $$file`"; \
+		path="`find $(FW_DIR)/ -name $$file`"; \
 		echo "Applying $$patch to $$file ($$path)"; \
 		cd tmp/; \
 		../tools/apktool/apktool d -f -p frameworks -t $(MIUI_VERSION) "../$$path" -o "$$file"; \
@@ -89,18 +89,18 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys
 	@for file in `find $(FW_DIR)/ -iname '*.apk'`; do ./tools/resign_apk.sh $$file `basename $$file|rev|cut -d . -f 2-|rev` $(MIUI_VERSION) || exit 1 ;done
 
 	@echo "Updating build.prop data"
-	@sed -i 's/armani/d10f/g' FW/system/build.prop
-	@sed -i 's/xiaomi/jsr/g' FW/system/build.prop
-	@sed -i 's/Xiaomi/JSR Tech/g' FW/system/build.prop
-	@sed -i 's/release-keys/dev-keys/g' FW/system/build.prop
-	@sed -i "s/ro.com.google.clientidbase.*//g" FW/system/build.prop
-	@sed -i "s/ro.build.type=.*/ro.build.type=userdebug/g" FW/system/build.prop
-	@sed -i "s/ro.build.type=.*/ro.build.type=userdebug/g" FW/system/build.prop
-	@sed -i "s/ro.product.model=.*/ro.product.model=D10F/g" FW/system/build.prop
-	@sed -i "s/d10f-user/d10f-userdebug/g" FW/system/build.prop
-	@sed -i "s :user/ :userdebug/ g" FW/system/build.prop
-	@sed -i "/ro.adb.secure=.*/d" FW/system/build.prop
-	@sed -i "s/ro.ota.current_rom.*//g" FW/system/build.prop
+	@sed -i 's/armani/d10f/g' $(FW_DIR)/system/build.prop
+	@sed -i 's/xiaomi/jsr/g' $(FW_DIR)/system/build.prop
+	@sed -i 's/Xiaomi/JSR Tech/g' $(FW_DIR)/system/build.prop
+	@sed -i 's/release-keys/dev-keys/g' $(FW_DIR)/system/build.prop
+	@sed -i "s/ro.com.google.clientidbase.*//g" $(FW_DIR)/system/build.prop
+	@sed -i "s/ro.build.type=.*/ro.build.type=userdebug/g" $(FW_DIR)/system/build.prop
+	@sed -i "s/ro.build.type=.*/ro.build.type=userdebug/g" $(FW_DIR)/system/build.prop
+	@sed -i "s/ro.product.model=.*/ro.product.model=D10F/g" $(FW_DIR)/system/build.prop
+	@sed -i "s/d10f-user/d10f-userdebug/g" $(FW_DIR)/system/build.prop
+	@sed -i "s :user/ :userdebug/ g" $(FW_DIR)/system/build.prop
+	@sed -i "/ro.adb.secure=.*/d" $(FW_DIR)/system/build.prop
+	@sed -i "s/ro.ota.current_rom.*//g" $(FW_DIR)/system/build.prop
 	@echo ro.ota.current_rom=$(OTAVER) >> $(FW_DIR)/system/build.prop
 
 ramdisk: boot/ramdisk.cpio.gz
@@ -160,7 +160,7 @@ $(FW_DIR)/boot.img: boot boot/kernel.zImage boot/dt.img boot/ramdisk.cpio.gz too
 	--output $(FW_DIR)/boot.img
 
 zip: $(ZIP)
-$(ZIP): $(shell find $(FW_DIR) -type f|sed 's/ /\\ /g') FW $(FW_DIR)/boot.img Makefile # FW zip depends on all files in $(FW_DIR)/ subdir, $(FW_DIR)/ itself, boot and Makefile
+$(ZIP): $(shell find $(FW_DIR) -type f|sed 's/ /\\ /g') $(FW_DIR) $(FW_DIR)/boot.img Makefile # FW zip depends on all files in $(FW_DIR)/ subdir, $(FW_DIR)/ itself, boot and Makefile
 	@echo "Packing flashable ZIP"
 	@rm -f "$(ZIP)"
 	@cd $(FW_DIR)/; zip -r "../$(ZIP)-unsigned" *
