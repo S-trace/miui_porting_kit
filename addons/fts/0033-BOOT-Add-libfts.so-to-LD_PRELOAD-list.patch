@@ -1,0 +1,27 @@
+From 185cd60a57c9252b61bbc7296248c78763f0e437 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Sun, 28 Aug 2016 11:19:11 +0300
+Subject: [PATCH] [BOOT] Add libfts.so to LD_PRELOAD list
+
+This is fixup for fts implementation in MIUI Bionic libc
+This bug is affecting Vold (ASEC management, for example).
+---
+ ramdisk/init.target.rc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ramdisk/init.target.rc b/ramdisk/init.target.rc
+index 9184c51..0663b09 100755
+--- a/ramdisk/init.target.rc
++++ b/ramdisk/init.target.rc
+@@ -60,7 +60,7 @@ on post-fs-data
+ 
+ # import cne init file
+ on post-fs
+-    export LD_PRELOAD /vendor/lib/libNimsWrap.so:/system/lib/libreservedVectorImpl.so:/system/lib/libvibrator.so
++    export LD_PRELOAD /vendor/lib/libNimsWrap.so:/system/lib/libreservedVectorImpl.so:/system/lib/libvibrator.so:/system/lib/libfts.so
+ 
+ 
+     chown system system /dev/sysmatdrv
+-- 
+2.7.4
+
