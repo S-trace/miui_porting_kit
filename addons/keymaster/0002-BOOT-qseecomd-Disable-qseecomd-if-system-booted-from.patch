@@ -1,0 +1,40 @@
+From 35d3f711cca5168fe5acda85792e45b228908204 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Mon, 12 Sep 2016 21:50:31 +0300
+Subject: [PATCH] [BOOT] qseecomd: Disable qseecomd if system booted from SD
+
+It fails, but tries again... again... and again...
+
+D/QSEECOMD: ( 6809): qseecom listener services process entry PPID = 1
+E/QSEECOMD: ( 6809): Listener: index = 0, hierarchy = 0
+D/QSEECOMD: ( 6809): Init dlopen(librpmb.so, RTLD_NOW) succeeds
+D/QSEECOMD: ( 6809): Init::Init dlsym(g_FSHandle rpmb_init_service) succeeds
+E/rpmb    ( 6809): Error finding /dev/block/mmcblk0rpmb (error no: 2)
+E/DrmLibRpmb( 6809): Error: rpmb_init failed! with ret = 2
+D/QSEECOMD: ( 6809): Init rpmb_init_service ret = 2
+E/QSEECOMD: ( 6809): Init dlsym(g_FSHandle, rpmb_init_service) fail
+E/QSEECOMD: ( 6809): ERROR: RPMB_INIT failed, shall not start listener services
+---
+ ramdisk/init.target.rc | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ramdisk/init.target.rc b/ramdisk/init.target.rc
+index 7b9ffac..818cd3a 100755
+--- a/ramdisk/init.target.rc
++++ b/ramdisk/init.target.rc
+@@ -142,6 +142,12 @@ service qseecomd /system/bin/qseecomd
+     user root
+     group root
+ 
++# qseecomd won't work on devices booted from SD
++on property:ro.boot.swap_sdcc=1
++    stop qseecomd
++on property:ro.boot.swap_sdcc=2
++    stop qseecomd
++
+ service audiod /system/bin/audiod
+    class late_start
+    user system
+-- 
+2.7.4
+
