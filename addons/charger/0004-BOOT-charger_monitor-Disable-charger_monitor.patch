@@ -1,0 +1,27 @@
+From 6fdafb49243afb4f9887eb8bf296a589e53ba35c Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Wed, 28 Sep 2016 13:14:07 +0300
+Subject: [PATCH] [BOOT] charger_monitor: Disable charger_monitor
+
+This daemon limits current from wall charger to 500mA (instead of 1500mA default value)
+---
+ ramdisk/init.qcom.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ramdisk/init.qcom.sh b/ramdisk/init.qcom.sh
+index 431a557..22e66f2 100755
+--- a/ramdisk/init.qcom.sh
++++ b/ramdisk/init.qcom.sh
+@@ -230,7 +230,8 @@ case "$target" in
+         start_charger_monitor
+         ;;
+     "msm8226")
+-        start_charger_monitor
++	# S-trace: charger_monitor limit current from wall charger to 500mA, so it is disabled it for JSR D10F.
++	if [ "_`getprop ro.product.device`" != _d10f ]; then start_charger_monitor; fi
+         ;;
+     "msm8610")
+         start_charger_monitor
+-- 
+2.9.3
+
