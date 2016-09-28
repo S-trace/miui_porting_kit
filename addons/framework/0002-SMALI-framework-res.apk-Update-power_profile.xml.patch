@@ -1,7 +1,7 @@
 From 1b78fcf6d4b850ce9b66dda77fdc1d7477338c53 Mon Sep 17 00:00:00 2001
 From: S-trace <S-trace@list.ru>
 Date: Sun, 22 May 2016 19:59:44 +0300
-Subject: [PATCH 1/2] [SMALI] framework-res.apk: Update power_profile.xml
+Subject: [PATCH] [SMALI] framework-res.apk: Update power_profile.xml
 
 ---
  framework-res.apk/res/xml/power_profile.xml | 49 +++++++++++++++--------------
