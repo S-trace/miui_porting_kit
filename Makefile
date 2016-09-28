@@ -165,7 +165,7 @@ $(ZIP): $(shell find $(FW_DIR) -type f|sed 's/ /\\ /g') $(FW_DIR) $(FW_DIR)/boot
 	@rm -f "$(ZIP)"
 	@cd $(FW_DIR)/; zip -r "../$(ZIP)-unsigned" *
 	@echo "Signing flashable ZIP"
-	@java -jar tools/signapk.jar -a 4 keys/$(MIUI_VERSION)/platform.x509.pem keys/$(MIUI_VERSION)/platform.pk8 "$(ZIP)-unsigned" "$(ZIP)"
+	@java -jar tools/signapk.jar -w -a 4 keys/$(MIUI_VERSION)/platform.x509.pem keys/$(MIUI_VERSION)/platform.pk8 "$(ZIP)-unsigned" "$(ZIP)"
 	@rm "$(ZIP)-unsigned"
 	@ln "$(ZIP)" "$(NAME)"
 	@echo $(ZIP) \($(NAME)\) built
