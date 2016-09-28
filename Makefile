@@ -12,7 +12,7 @@ all:  install
 
 clean:
 	$(MAKE) -C tools/bootimg clean
-	rm -rf miui-*.zip *.list $(FW_DIR) boot tmp
+	rm -rf miui-*.zip *.list $(FW_DIR) boot tmp $(ZIP)-unsigned
 
 tools: tools/bootimg/mkbootimg tools/bootimg/unpackbootimg
 tools/bootimg/mkbootimg:
