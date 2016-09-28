@@ -1,0 +1,24 @@
+From 53be0baf26f83e74590053dbd0bac5442c30cc11 Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Sun, 22 May 2016 11:21:24 +0300
+Subject: [PATCH] [FW] build.prop: Set ro.sf.lcd_density=320
+
+---
+ system/build.prop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/system/build.prop b/system/build.prop
+index 777e0ca..d36d29c 100644
+--- a/system/build.prop
++++ b/system/build.prop
+@@ -259,6 +259,7 @@ ro.miui.mcc=9998
+ ro.miui.mnc=9999
+ ro.setupwizard.mode=OPTIONAL
+ ro.com.google.gmsversion=4.4_r4
++ro.sf.lcd_density=320
+ drm.service.enabled=true
+ ro.adb.secure=1
+ persist.adb.notify=0
+-- 
+2.9.3
+

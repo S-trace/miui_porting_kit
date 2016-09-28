@@ -1,16 +1,16 @@
-From e6f48b4fb5568a4c8556b46c414f134f7850f46c Mon Sep 17 00:00:00 2001
+From 1ab70dd6d33201f1f895ea7250744e66acdd8a92 Mon Sep 17 00:00:00 2001
 From: S-trace <S-trace@list.ru>
 Date: Thu, 5 May 2016 23:03:52 +0300
-Subject: [PATCH 06/54] [FW] Update device assert for d10f
+Subject: [PATCH] [FW] updater_script: Update device assert for d10f
 
 ---
- FW/META-INF/com/google/android/updater-script | 1 -
+ META-INF/com/google/android/updater-script | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/FW/META-INF/com/google/android/updater-script b/FW/META-INF/com/google/android/updater-script
-index b871b05..50bc248 100644
---- a/FW/META-INF/com/google/android/updater-script
-+++ b/FW/META-INF/com/google/android/updater-script
+diff --git a/META-INF/com/google/android/updater-script b/META-INF/com/google/android/updater-script
+index 80e128e..8b4fb9c 100644
+--- a/META-INF/com/google/android/updater-script
++++ b/META-INF/com/google/android/updater-script
 @@ -1,4 +1,4 @@
 -getprop("ro.product.device") == "armani" || abort("This package is for \"armani\" devices; this is a \"" + getprop("ro.product.device") + "\".");
 +assert(getprop("ro.product.device") == "d10f" || getprop("ro.build.product") == "d10f" || getprop("ro.product.device") == "D10F" || getprop("ro.build.product") == "D10F" || getprop("ro.product.device") == "D10A_ROM" || getprop("ro.build.product") == "D10A_ROM" || getprop("ro.product.device") == "D10A_NEW_ROM" || getprop("ro.build.product") == "D10A_NEW_ROM" || getprop("ro.product.device") == "D10A_ROM_D10F" || getprop("ro.build.product") == "D10A_ROM_D10F" || getprop("ro.product.device") == "D10A_FGN" || getprop("ro.build.product") == "D10A_FGN" || getprop("ro.product.device") == "D10A_8G2G" || getprop("ro.build.product") == "D10A_8G2G" || getprop("ro.product.device") == "D10A_HighScreen" || getprop("ro.build.product") == "D10A_HighScreen" || getprop("ro.product.device") == "Pentagram" || getprop("ro.build.product") == "Pentagram" || getprop("ro.product.device") == "D10A_Pentagram" || getprop("ro.build.product") == "D10A_Pentagram" || getprop("ro.product.device") == "BRAVA" || getprop("ro.build.product") == "BRAVA" || getprop("ro.product.device") == "D10CF_BRAVA" || getprop("ro.build.product") == "D10CF_BRAVA" || getprop("ro.product.device") == "THAI_IMOBILE" || getprop("ro.build.product") == "THAI_IMOBILE" || getprop("ro.product.device") == "D10A_THA_IMobile" || getprop("ro.build.product") == "D10A_THA_IMobile" || abort("This package is for device: d10f,D10F,D10A_ROM,D10A_NEW_ROM,D10A_ROM_D10F,D10A_FGN,D10A_8G2G,D10A_HighScreen,Pentagram,D10A_Pentagram,BRAVA,D10CF_BRAVA,THAI_IMOBILE,D10A_THA_IMobile; this device is " + getprop("ro.product.device") + "."););
@@ -18,5 +18,5 @@ index b871b05..50bc248 100644
  show_progress(0.500000, 0);
  format("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/system", "0", "/system");
 -- 
-2.7.4
+2.9.3
 

@@ -1,17 +1,17 @@
-From 951d5b2194ac6d5f21bca882de5816e3bef11cf4 Mon Sep 17 00:00:00 2001
+From 219f358ce2dd9ff51f7df5d8f4cee16db7f249e3 Mon Sep 17 00:00:00 2001
 From: S-trace <S-trace@list.ru>
 Date: Thu, 5 May 2016 22:40:22 +0300
-Subject: [PATCH 01/54] [FW] Purge dangerous armani bootloaders and modem
+Subject: [PATCH] [FW] cleanup: Purge dangerous armani bootloaders and modem
 
 ---
- FW/META-INF/com/google/android/updater-script |  13 -------------
- 1 files changed, 13 deletions(-)
+ META-INF/com/google/android/updater-script | 13 -------------
+ 1 file changed, 13 deletions(-)
 
-diff --git a/FW/META-INF/com/google/android/updater-script b/FW/META-INF/com/google/android/updater-script
-index f2947b8..a21fe41 100644
---- a/FW/META-INF/com/google/android/updater-script
-+++ b/FW/META-INF/com/google/android/updater-script
-@@ -91,19 +91,6 @@ show_progress(0.200000, 0);
+diff --git a/META-INF/com/google/android/updater-script b/META-INF/com/google/android/updater-script
+index 4503957..22aa876 100644
+--- a/META-INF/com/google/android/updater-script
++++ b/META-INF/com/google/android/updater-script
+@@ -90,19 +90,6 @@ show_progress(0.200000, 0);
  show_progress(0.200000, 10);
  package_extract_file("boot.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
  show_progress(0.100000, 0);
@@ -32,5 +32,5 @@ index f2947b8..a21fe41 100644
  delete("/data/app/GoogleTTS.apk");
  delete_recursive("/data/miui/cust/cn/app_overlay");
 -- 
-2.7.4
+2.9.3
 

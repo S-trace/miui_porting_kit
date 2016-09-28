@@ -45,8 +45,8 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys/$(MIUI_VERSION) Makefi
 	@cp -r addons/*/$(FW_DIR)/* $(FW_DIR)/
 
 	@echo "Applying FW patches"
-	@for patch in `find addons/ -name *-FW-*.patch -type f|sort`; do echo "Applying $$patch"; patch -p1 < $$patch || exit 1; done
-	@find -name *.orig -delete
+	@cd FW; for patch in `find ../addons/ -name *-FW-*.patch -type f|sort`; do echo "Applying $$patch"; patch -p1 < $$patch || exit 1; done
+	@find FW/ -name *.orig -delete
 
 	@echo "Determining signing keys"
 	@./tools/determine_signing_keys.sh $(FW_DIR)
