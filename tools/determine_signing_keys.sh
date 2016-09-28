@@ -18,8 +18,13 @@ determine_key_hash(){
 determine_key(){
   file="$1"
   echo -n "Determining key for $file... "
+  FORCED_KEY=$(grep $file forced_keys|cut -d : -f 2)
+  if [ "q$FORCED_KEY" != q ]; then
+    echo $file >> "$FORCED_KEY.list"
+    echo FORCED $FORCED_KEY
+    return
+  fi
   FILE_HASH="$(keytool -printcert -jarfile ./$file|grep SHA256:|tr -d '\t :')"
-  rm -rf /tmp/META-INF
   if [ q$FILE_HASH = q$MEDIA_HASH ]; then
     echo $file >> media.list
     echo media
