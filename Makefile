@@ -101,6 +101,7 @@ FW: tools/bootimg/unpackbootimg addons/*/$(FW_DIR)/* keys/$(MIUI_VERSION) Makefi
 	@sed -i "s :user/ :userdebug/ g" $(FW_DIR)/system/build.prop
 	@sed -i "/ro.adb.secure=.*/d" $(FW_DIR)/system/build.prop
 	@sed -i "s/ro.ota.current_rom.*//g" $(FW_DIR)/system/build.prop
+	@sed -i "s/ro.miui.has_real_blur=.*/ro.miui.has_blur=1/g" $(FW_DIR)/system/build.prop
 	@echo ro.ota.current_rom=$(OTAVER) >> $(FW_DIR)/system/build.prop
 
 ramdisk: boot/ramdisk.cpio.gz
