@@ -10,6 +10,13 @@ MIUI_FILE="/system/app/MiuiVideo.apk"
 PATCHROM_FILE="/system/app/Email.apk"
 FW="$1"
 
+# Well known serials (CM-13.0 test-keys)
+KNOWN_MEDIA_SERIAL="f2b98e6123572c4e"
+KNOWN_PLATFORM_SERIAL="b3998086d056cffa"
+KNOWN_SHARED_SERIAL="f2a73396bd38767a"
+KNOWN_TESTKEY_SERIAL="936eacbe07f201df"
+KNOWN_VERITY_SERIAL="970f983909aa8949"
+
 determine_key_serial(){
   file="$1"
   keytool -printcert -jarfile ./$file|grep 'Serial '|cut -d ' ' -f 3
@@ -22,6 +29,31 @@ determine_key(){
   if [ "q$FORCED_KEY" != q ]; then
     echo $file >> "$FORCED_KEY.list"
     echo FORCED $FORCED_KEY
+    return
+  fi
+  if [ q$FILE_SERIAL = q$KNOWN_MEDIA_SERIAL ]; then
+    echo $file >> known_media.list
+    echo known_media
+    return
+  fi
+  if [ q$FILE_SERIAL = q$KNOWN_PLATFORM_SERIAL ]; then
+    echo $file >> known_platform.list
+    echo known_platform
+    return
+  fi
+  if [ q$FILE_SERIAL = q$KNOWN_SHARED_SERIAL ]; then
+    echo $file >> known_shared.list
+    echo known_shared
+    return
+  fi
+  if [ q$FILE_SERIAL = q$KNOWN_TESTKEY_SERIAL ]; then
+    echo $file >> known_testkey.list
+    echo known_testkey
+    return
+  fi
+  if [ q$FILE_SERIAL = q$KNOWN_VERITY_SERIAL ]; then
+    echo $file >> known_verity.list
+    echo known_verity
     return
   fi
   FILE_SERIAL="$(determine_key_serial "./$file")"
