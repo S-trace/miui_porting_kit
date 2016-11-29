@@ -10,9 +10,9 @@ MIUI_FILE="/system/app/MiuiVideo.apk"
 PATCHROM_FILE="/system/app/Email.apk"
 FW="$1"
 
-determine_key_serial(){
+determine_key_hash(){
   file="$1"
-  keytool -printcert -jarfile ./$file|grep 'Serial '|cut -d ' ' -f 3
+  keytool -printcert -jarfile ./$file|grep SHA256:|tr -d '\t :'
 }
 
 determine_key(){
@@ -24,43 +24,43 @@ determine_key(){
     echo FORCED $FORCED_KEY
     return
   fi
-  FILE_SERIAL="$(determine_key_serial "./$file")"
-  if [ q$FILE_SERIAL = q$MEDIA_SERIAL ]; then
+  FILE_HASH="$(keytool -printcert -jarfile ./$file|grep SHA256:|tr -d '\t :')"
+  if [ q$FILE_HASH = q$MEDIA_HASH ]; then
     echo $file >> media.list
     echo media
     return
   fi
-  if [ q$FILE_SERIAL = q$PLATFORM_SERIAL ]; then
+  if [ q$FILE_HASH = q$PLATFORM_HASH ]; then
     echo $file >> platform.list
     echo platform
     return
   fi
-  if [ q$FILE_SERIAL = q$SHARED_SERIAL ]; then
+  if [ q$FILE_HASH = q$SHARED_HASH ]; then
     echo $file >> shared.list
     echo shared
     return
   fi
-  if [ q$FILE_SERIAL = q$TESTKEY_SERIAL ]; then
+  if [ q$FILE_HASH = q$TESTKEY_HASH ]; then
     echo $file >> testkey.list
     echo testkey
     return
   fi
-  if [ q$FILE_SERIAL = q$GOOGLE_SERIAL ]; then
+  if [ q$FILE_HASH = q$GOOGLE_HASH ]; then
     echo $file >> google.list
     echo google
     return
   fi
-  if [ q$FILE_SERIAL = q$MIUI_SERIAL ]; then
+  if [ q$FILE_HASH = q$MIUI_HASH ]; then
     echo $file >> miui.list
     echo miui
     return
   fi
-  if [ q$FILE_SERIAL = q$PATCHROM_SERIAL ]; then
+  if [ q$FILE_HASH = q$PATCHROM_HASH ]; then
     echo $file >> patchrom.list
     echo patchrom
     return
   fi
-  if [ q$FILE_SERIAL = q$UNSIGNED_SERIAL ]; then
+  if [ q$FILE_HASH = q$UNSIGNED_HASH ]; then
     echo $file >> unsigned.list
     echo unsigned
     return
@@ -70,25 +70,25 @@ determine_key(){
 }
 
 cd "$FW"/
-MEDIA_SERIAL=$(determine_key_serial $MEDIA_FILE)
-PLATFORM_SERIAL=$(determine_key_serial $PLATFORM_FILE)
-SHARED_SERIAL=$(determine_key_serial $SHARED_FILE)
-TESTKEY_SERIAL=$(determine_key_serial $TESTKEY_FILE)
-GOOGLE_SERIAL=$(determine_key_serial $GOOGLE_FILE)
-MIUI_SERIAL=$(determine_key_serial $MIUI_FILE)
-PATCHROM_SERIAL=$(determine_key_serial $PATCHROM_FILE)
-UNSIGNED_SERIAL=$(determine_key_serial $UNSIGNED_FILE)
+MEDIA_HASH=$(determine_key_hash $MEDIA_FILE)
+PLATFORM_HASH=$(determine_key_hash $PLATFORM_FILE)
+SHARED_HASH=$(determine_key_hash $SHARED_FILE)
+TESTKEY_HASH=$(determine_key_hash $TESTKEY_FILE)
+GOOGLE_HASH=$(determine_key_hash $GOOGLE_FILE)
+MIUI_HASH=$(determine_key_hash $MIUI_FILE)
+PATCHROM_HASH=$(determine_key_hash $PATCHROM_FILE)
+UNSIGNED_HASH=$(determine_key_hash $UNSIGNED_FILE)
 cd -
 
 rm -f *.list
-echo MEDIA:	$MEDIA_SERIAL
-echo PLATFORM:	$PLATFORM_SERIAL
-echo SHARED:	$SHARED_SERIAL
-echo TESTKEY:	$TESTKEY_SERIAL
-echo GOOGLE:	$GOOGLE_SERIAL
-echo MIUI:	$MIUI_SERIAL
-echo PATCHROM	$PATCHROM_SERIAL
-echo UNSIGNED:	$UNSIGNED_SERIAL
+echo MEDIA:	$MEDIA_HASH 
+echo PLATFORM:	$PLATFORM_HASH 
+echo SHARED:	$SHARED_HASH 
+echo TESTKEY:	$TESTKEY_HASH 
+echo GOOGLE:	$GOOGLE_HASH 
+echo MIUI:	$MIUI_HASH 
+echo PATCHROM	$PATCHROM_HASH
+echo UNSIGNED:	$UNSIGNED_HASH
 # exit 0
 for file in $(find "$FW"/ -iname "*.jar" -or -iname "*.apk"); do 
   determine_key $file
