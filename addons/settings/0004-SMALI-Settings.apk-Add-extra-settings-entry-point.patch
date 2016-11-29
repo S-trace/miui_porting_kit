@@ -1,6 +1,6 @@
-From b5e30fa3b8fb5331bfd2073289181e231707db22 Mon Sep 17 00:00:00 2001
+From 3abc92d2da7a16059c882e15abb5e2c2898f5e5a Mon Sep 17 00:00:00 2001
 From: S-trace <S-trace@list.ru>
-Date: Sun, 28 Aug 2016 11:47:21 +0300
+Date: Tue, 29 Nov 2016 14:26:30 +0300
 Subject: [PATCH] [SMALI] Settings.apk: Add extra settings entry point
 
 ---
@@ -8,29 +8,29 @@ Subject: [PATCH] [SMALI] Settings.apk: Add extra settings entry point
  Settings.apk/res/values-ru/strings.xml                               | 1 +
  Settings.apk/res/values-zh-rTW/strings.xml                           | 1 +
  Settings.apk/res/values/ids.xml                                      | 1 +
- Settings.apk/res/values/public.xml                                   | 3 ++-
+ Settings.apk/res/values/public.xml                                   | 5 +++--
  Settings.apk/res/values/strings.xml                                  | 1 +
  Settings.apk/res/xml/settings_headers.xml                            | 3 +++
  Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali | 4 ++--
- 8 files changed, 12 insertions(+), 3 deletions(-)
+ 8 files changed, 13 insertions(+), 4 deletions(-)
 
 diff --git a/Settings.apk/res/values-pl/strings.xml b/Settings.apk/res/values-pl/strings.xml
-index 2a0a219..b67a5d4 100644
+index 1d61e0c..505b0ae 100644
 --- a/Settings.apk/res/values-pl/strings.xml
 +++ b/Settings.apk/res/values-pl/strings.xml
-@@ -2088,6 +2088,7 @@ Każdy użytkownik może akceptować zaktualizowane uprawnienia aplikacji w imie
+@@ -2095,6 +2095,7 @@ Każdy użytkownik może akceptować zaktualizowane uprawnienia aplikacji w imie
      <string name="user_image_take_photo">Zrób zdjęcie</string>
      <string name="user_image_choose_photo">Wybierz zdjęcie z galerii</string>
      <string name="regulatory_info_text" />
 +    <string name="device_settings">Ustawienia dodatkowe</string>
      <string name="wifi_display_settings_empty_list_wifi_display_disabled">Wyświetlacz bezprzewodowy jest wyłączony, ponieważ wyłączone jest Wi-Fi.</string>
+     <string name="cell_broadcast_settings_summary">Wybierz typ komunikatów alarmowych</string>
      <string name="screen_timeout_title">Wyłączenie ekranu</string>
-     <string name="lockpattern_settings_power_button_instantly_locks_summary">Z wyjątkiem sytuacji, gdy blokadę anuluje %1$s</string>
 diff --git a/Settings.apk/res/values-ru/strings.xml b/Settings.apk/res/values-ru/strings.xml
-index 3b97726..da515b0 100644
+index dc131e3..c2e2050 100644
 --- a/Settings.apk/res/values-ru/strings.xml
 +++ b/Settings.apk/res/values-ru/strings.xml
-@@ -1069,6 +1069,7 @@
+@@ -1076,6 +1076,7 @@
      <string name="legal_information">Правовая информация</string>
      <string name="contributors_title">Участники</string>
      <string name="regulatory_information">Нормативная информация</string>
@@ -39,10 +39,10 @@ index 3b97726..da515b0 100644
      <string name="license_title">Лицензия</string>
      <string name="terms_title">Условия использования</string>
 diff --git a/Settings.apk/res/values-zh-rTW/strings.xml b/Settings.apk/res/values-zh-rTW/strings.xml
-index 00a557e..cee407d 100644
+index cb616fb..abedca2 100644
 --- a/Settings.apk/res/values-zh-rTW/strings.xml
 +++ b/Settings.apk/res/values-zh-rTW/strings.xml
-@@ -1030,6 +1030,7 @@ PIN 碼可能不正確。"</string>
+@@ -1036,6 +1036,7 @@ PIN 碼可能不正確。"</string>
      <string name="legal_information">法律資訊</string>
      <string name="contributors_title">貢獻者</string>
      <string name="regulatory_information">法規資訊</string>
@@ -51,41 +51,48 @@ index 00a557e..cee407d 100644
      <string name="license_title">授權</string>
      <string name="terms_title">條款及細則</string>
 diff --git a/Settings.apk/res/values/ids.xml b/Settings.apk/res/values/ids.xml
-index 1bb1ee4..9cc0201 100644
+index c794e93..2b8af3b 100644
 --- a/Settings.apk/res/values/ids.xml
 +++ b/Settings.apk/res/values/ids.xml
-@@ -839,4 +839,5 @@
+@@ -861,4 +861,5 @@
      <item type="id" name="vpn_create">false</item>
      <item type="id" name="vpn_lockdown">false</item>
      <item type="id" name="wifi_wps">false</item>
 +    <item type="id" name="device_settings">false</item>
  </resources>
 diff --git a/Settings.apk/res/values/public.xml b/Settings.apk/res/values/public.xml
-index 10a2d40..e7554df 100644
+index fe925ef..e18a46c 100644
 --- a/Settings.apk/res/values/public.xml
 +++ b/Settings.apk/res/values/public.xml
-@@ -6632,7 +6632,7 @@
-     <public type="string" name="path_no_fingerprint_wakeup_for_keyguard_notification_title" id="0x7f0b0f99" />
-     <public type="string" name="path_no_fingerprint_pref_volume_wake_title" id="0x7f0b0f9a" />
-     <public type="string" name="path_no_fingerprint_screen_on_proximity_sensor_title" id="0x7f0b0f9b" />
--    <public type="string" name="APKTOOL_DUMMY_0816" id="0x7f0b0816" />
-+    <public type="string" name="device_settings" id="0x7f0b0816" />
-     <public type="string" name="APKTOOL_DUMMY_0818" id="0x7f0b0818" />
-     <public type="string" name="APKTOOL_DUMMY_0819" id="0x7f0b0819" />
-     <public type="string" name="APKTOOL_DUMMY_081a" id="0x7f0b081a" />
-@@ -8895,6 +8895,7 @@
-     <public type="id" name="vpn_create" id="0x7f0e0346" />
-     <public type="id" name="vpn_lockdown" id="0x7f0e0347" />
-     <public type="id" name="wifi_wps" id="0x7f0e0348" />
-+    <public type="id" name="device_settings" id="0x7f0e0349" />
+@@ -6949,7 +6949,7 @@
+     <public type="string" name="password_promotion_postbutton_text" id="0x7f0b12dc" />
+     <public type="string" name="quiet_no_mode" id="0x7f0b1970" />
+     <public type="string" name="keywords_color_mode" id="0x7f0b1974" />
+-    <public type="string" name="APKTOOL_DUMMY_081d" id="0x7f0b081d" />
++    <public type="string" name="device_settings" id="0x7f0b081d" />
+     <public type="string" name="APKTOOL_DUMMY_081f" id="0x7f0b081f" />
+     <public type="string" name="APKTOOL_DUMMY_0820" id="0x7f0b0820" />
+     <public type="string" name="APKTOOL_DUMMY_0821" id="0x7f0b0821" />
+@@ -9252,6 +9252,7 @@
+     <public type="id" name="vpn_create" id="0x7f0e035c" />
+     <public type="id" name="vpn_lockdown" id="0x7f0e035d" />
+     <public type="id" name="wifi_wps" id="0x7f0e035e" />
++    <public type="id" name="device_settings" id="0x7f0e081d" />
      <public type="integer" name="maximum_user_dictionary_word_length" id="0x7f0f0000" />
      <public type="integer" name="keyguard_appwidget_picker_cols" id="0x7f0f0001" />
      <public type="integer" name="preference_scrollbar_style" id="0x7f0f0002" />
+@@ -9403,4 +9404,4 @@
+     <public type="menu" name="usage_log" id="0x7f110005" />
+     <public type="menu" name="vpn" id="0x7f110006" />
+     <public type="menu" name="wifi_setup" id="0x7f110007" />
+-</resources>
+\ No newline at end of file
++</resources>
 diff --git a/Settings.apk/res/values/strings.xml b/Settings.apk/res/values/strings.xml
-index 14f7404..85413cd 100644
+index ac873ca..1786bda 100644
 --- a/Settings.apk/res/values/strings.xml
 +++ b/Settings.apk/res/values/strings.xml
-@@ -1099,6 +1099,7 @@ To clear music, pictures, and other user data, the "<b>SD card</b> needs to be e
+@@ -1106,6 +1106,7 @@ To clear music, pictures, and other user data, the "<b>SD card</b> needs to be e
      <string name="legal_information">Legal information</string>
      <string name="contributors_title">Contributors</string>
      <string name="regulatory_information">Regulatory information</string>
@@ -94,10 +101,10 @@ index 14f7404..85413cd 100644
      <string name="license_title">License</string>
      <string name="terms_title">Terms and conditions</string>
 diff --git a/Settings.apk/res/xml/settings_headers.xml b/Settings.apk/res/xml/settings_headers.xml
-index 18565c3..03b54f6 100644
+index b0ca8c3..7710073 100644
 --- a/Settings.apk/res/xml/settings_headers.xml
 +++ b/Settings.apk/res/xml/settings_headers.xml
-@@ -54,5 +54,8 @@
+@@ -53,5 +53,8 @@
          <intent android:action="com.miui.securitycenter.action.TRANSITION" />
      </header>
      <header android:icon="@drawable/ic_account_autostar" android:id="@id/account_autostar" android:title="@string/account_autostar_label" android:fragment="com.android.settings.Autostar.AutoMangement" />
@@ -108,10 +115,10 @@ index 18565c3..03b54f6 100644
  </preference-headers>
 \ No newline at end of file
 diff --git a/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali b/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
-index d73215c..3b98057 100644
+index a268794..ddd5c06 100644
 --- a/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
 +++ b/Settings.apk/smali/com/android/settings/MiuiDeviceInfoSettings.smali
-@@ -3083,9 +3083,9 @@
+@@ -3053,9 +3053,9 @@
  
      invoke-direct {v0}, Landroid/content/Intent;-><init>()V
  
@@ -124,5 +131,5 @@ index d73215c..3b98057 100644
      invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
  
 -- 
-2.7.4
+2.9.3
 
