@@ -11,10 +11,10 @@ diff --git a/system/build.prop b/system/build.prop
 index 777e0ca..d36d29c 100644
 --- a/system/build.prop
 +++ b/system/build.prop
-@@ -259,6 +259,7 @@ ro.miui.mcc=9998
+@@ -312,6 +312,7 @@
  ro.miui.mnc=9999
  ro.setupwizard.mode=OPTIONAL
- ro.com.google.gmsversion=4.4_r4
+ ro.com.google.gmsversion=6.0_r2
 +ro.sf.lcd_density=320
  drm.service.enabled=true
  ro.adb.secure=1

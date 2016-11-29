@@ -1,0 +1,40 @@
+From c28436dcdec311df4d823ebefa12cb4bfa47e7cf Mon Sep 17 00:00:00 2001
+From: S-trace <S-trace@list.ru>
+Date: Fri, 4 Nov 2016 08:41:23 +0300
+Subject: [PATCH] [FW] cleanup: Purge virgo TWRP recovery
+
+---
+ META-INF/com/google/android/updater-script | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/META-INF/com/google/android/updater-script b/META-INF/com/google/android/updater-script
+index 5e28e6b..be36ce5 100644
+--- a/META-INF/com/google/android/updater-script
++++ b/META-INF/com/google/android/updater-script
+@@ -150,7 +150,6 @@ set_metadata("/system/bin/ims_rtp_daemon", "uid", 0, "gid", 2000, "mode", 0755,
+ set_metadata("/system/bin/imscmservice", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:imscm_exec:s0");
+ set_metadata("/system/bin/imsdatadaemon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:ims_exec:s0");
+ set_metadata("/system/bin/imsqmidaemon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:ims_exec:s0");
+-set_metadata("/system/bin/install-recovery.sh", "uid", 0, "gid", 0, "mode", 0750, "capabilities", 0x0, "selabel", "u:object_r:install_recovery_exec:s0");
+ set_metadata("/system/bin/installd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:installd_exec:s0");
+ set_metadata("/system/bin/irsc_util", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:irsc_util_exec:s0");
+ set_metadata("/system/bin/irtest", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:irsc_util_exec:s0");
+@@ -216,7 +215,6 @@ set_metadata("/system/bin/xtwifi-client", "uid", 0, "gid", 2000, "mode", 0755, "
+ set_metadata("/system/bin/xtwifi-inet-agent", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:location_exec:s0");
+ set_metadata("/system/etc/dhcpcd/dhcpcd-run-hooks", "uid", 1014, "gid", 2000, "mode", 0550, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+ set_metadata_recursive("/system/etc/ppp", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0555, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+-set_metadata("/system/recovery-from-boot.p", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0);
+ set_metadata("/system/vendor", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+ set_metadata_recursive("/system/vendor/bin", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:thermal-engine_exec:s0");
+ set_metadata("/system/vendor/bin", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+@@ -377,7 +375,4 @@ delete_recursive("/data/cust");
+ delete_recursive("/data/miui/cust_variant");
+ delete_recursive("/data/miui/app/recommended");
+ unmount("/data");
+-ui_print("Installing custom recovery");
+-ui_print("Flashing TWRP Touch recovery...");
+-package_extract_file("recovery/twrp.img", "/dev/block/platform/msm_sdcc.1/by-name/recovery");
+ set_progress(1);
+-- 
+2.9.3
+
