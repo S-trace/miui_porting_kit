@@ -45,6 +45,11 @@ determine_key(){
     echo testkey
     return
   fi
+  if [ q$FILE_HASH = q$UNSIGNED_HASH ]; then
+    echo $file >> unsigned.list
+    echo unsigned
+    return
+  fi
   if [ q$FILE_HASH = q$GOOGLE_HASH ]; then
     echo $file >> google.list
     echo google
@@ -58,11 +63,6 @@ determine_key(){
   if [ q$FILE_HASH = q$PATCHROM_HASH ]; then
     echo $file >> patchrom.list
     echo patchrom
-    return
-  fi
-  if [ q$FILE_HASH = q$UNSIGNED_HASH ]; then
-    echo $file >> unsigned.list
-    echo unsigned
     return
   fi
   echo $file >> unknown.list
