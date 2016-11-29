@@ -1,13 +1,13 @@
 #!/bin/sh
 # Files signed with known ceritain key:
-MEDIA_FILE="/system/priv-app/MediaProvider.apk"
+MEDIA_FILE="/system/priv-app/MediaProvider/MediaProvider.apk"
 PLATFORM_FILE="/system/framework/framework-res.apk"
-SHARED_FILE="/system/priv-app/ContactsProvider.apk"
-TESTKEY_FILE="/system/priv-app/CalendarProvider.apk"
-UNSIGNED_FILE="/system/app/TrafficControl.apk"
-GOOGLE_FILE="/system/priv-app/Phonesky.apk"
-MIUI_FILE="/system/app/MiuiVideo.apk"
-PATCHROM_FILE="/system/app/Email.apk"
+SHARED_FILE="/system/priv-app/ContactsProvider/ContactsProvider.apk"
+TESTKEY_FILE="/system/priv-app/CalendarProvider/CalendarProvider.apk"
+UNSIGNED_FILE="/system/framework/framework.jar"
+GOOGLE_FILE="/system/priv-app/Phonesky/Phonesky.apk"
+MIUI_FILE="/system/app/MiuiVideo/MiuiVideo.apk"
+PATCHROM_FILE="/system/app/Email/Email.apk"
 FW="$1"
 
 # Well known serials (CM-13.0 test-keys)
